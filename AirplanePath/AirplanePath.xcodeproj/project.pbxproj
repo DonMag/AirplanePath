@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FC6BD3FF2CD9059600A71251 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD3FE2CD9059600A71251 /* AppDelegate.m */; };
+		FC6BD4022CD9059600A71251 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4012CD9059600A71251 /* ViewController.m */; };
+		FC6BD4042CD9059700A71251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4032CD9059700A71251 /* Assets.xcassets */; };
+		FC6BD4072CD9059800A71251 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4052CD9059800A71251 /* Main.storyboard */; };
+		FC6BD4092CD9059800A71251 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4082CD9059800A71251 /* main.m */; };
+		FC6BD4162CD912B800A71251 /* AirplaneCGPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4122CD912B700A71251 /* AirplaneCGPath.m */; };
+		FC6BD4172CD912B800A71251 /* AirplaneView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4132CD912B800A71251 /* AirplaneView.m */; };
+		FC6BD4182CD912B800A71251 /* CGPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4152CD912B800A71251 /* CGPathTransformer.m */; };
+		FC6BD41B2CD9603300A71251 /* ScalingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD41A2CD9603300A71251 /* ScalingViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FC6BD3FA2CD9059600A71251 /* AirplanePath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirplanePath.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6BD3FD2CD9059600A71251 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FC6BD3FE2CD9059600A71251 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FC6BD4002CD9059600A71251 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FC6BD4012CD9059600A71251 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FC6BD4032CD9059700A71251 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC6BD4062CD9059800A71251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FC6BD4082CD9059800A71251 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FC6BD40A2CD9059800A71251 /* AirplanePath.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AirplanePath.entitlements; sourceTree = "<group>"; };
+		FC6BD4102CD912B700A71251 /* AirplaneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirplaneView.h; sourceTree = "<group>"; };
+		FC6BD4112CD912B700A71251 /* AirplaneCGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirplaneCGPath.h; sourceTree = "<group>"; };
+		FC6BD4122CD912B700A71251 /* AirplaneCGPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirplaneCGPath.m; sourceTree = "<group>"; };
+		FC6BD4132CD912B800A71251 /* AirplaneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirplaneView.m; sourceTree = "<group>"; };
+		FC6BD4142CD912B800A71251 /* CGPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPathTransformer.h; sourceTree = "<group>"; };
+		FC6BD4152CD912B800A71251 /* CGPathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPathTransformer.m; sourceTree = "<group>"; };
+		FC6BD4192CD9603300A71251 /* ScalingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScalingViewController.h; sourceTree = "<group>"; };
+		FC6BD41A2CD9603300A71251 /* ScalingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScalingViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC6BD3F72CD9059600A71251 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FC6BD3F12CD9059600A71251 = {
+			isa = PBXGroup;
+			children = (
+				FC6BD3FC2CD9059600A71251 /* AirplanePath */,
+				FC6BD3FB2CD9059600A71251 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC6BD3FB2CD9059600A71251 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC6BD3FA2CD9059600A71251 /* AirplanePath.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC6BD3FC2CD9059600A71251 /* AirplanePath */ = {
+			isa = PBXGroup;
+			children = (
+				FC6BD3FD2CD9059600A71251 /* AppDelegate.h */,
+				FC6BD3FE2CD9059600A71251 /* AppDelegate.m */,
+				FC6BD4002CD9059600A71251 /* ViewController.h */,
+				FC6BD4012CD9059600A71251 /* ViewController.m */,
+				FC6BD4112CD912B700A71251 /* AirplaneCGPath.h */,
+				FC6BD4122CD912B700A71251 /* AirplaneCGPath.m */,
+				FC6BD4102CD912B700A71251 /* AirplaneView.h */,
+				FC6BD4132CD912B800A71251 /* AirplaneView.m */,
+				FC6BD4142CD912B800A71251 /* CGPathTransformer.h */,
+				FC6BD4152CD912B800A71251 /* CGPathTransformer.m */,
+				FC6BD4192CD9603300A71251 /* ScalingViewController.h */,
+				FC6BD41A2CD9603300A71251 /* ScalingViewController.m */,
+				FC6BD4032CD9059700A71251 /* Assets.xcassets */,
+				FC6BD4052CD9059800A71251 /* Main.storyboard */,
+				FC6BD4082CD9059800A71251 /* main.m */,
+				FC6BD40A2CD9059800A71251 /* AirplanePath.entitlements */,
+			);
+			path = AirplanePath;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC6BD3F92CD9059600A71251 /* AirplanePath */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC6BD40D2CD9059800A71251 /* Build configuration list for PBXNativeTarget "AirplanePath" */;
+			buildPhases = (
+				FC6BD3F62CD9059600A71251 /* Sources */,
+				FC6BD3F72CD9059600A71251 /* Frameworks */,
+				FC6BD3F82CD9059600A71251 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AirplanePath;
+			productName = AirplanePath;
+			productReference = FC6BD3FA2CD9059600A71251 /* AirplanePath.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC6BD3F22CD9059600A71251 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					FC6BD3F92CD9059600A71251 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = FC6BD3F52CD9059600A71251 /* Build configuration list for PBXProject "AirplanePath" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FC6BD3F12CD9059600A71251;
+			productRefGroup = FC6BD3FB2CD9059600A71251 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC6BD3F92CD9059600A71251 /* AirplanePath */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC6BD3F82CD9059600A71251 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6BD4042CD9059700A71251 /* Assets.xcassets in Resources */,
+				FC6BD4072CD9059800A71251 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC6BD3F62CD9059600A71251 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6BD4022CD9059600A71251 /* ViewController.m in Sources */,
+				FC6BD4162CD912B800A71251 /* AirplaneCGPath.m in Sources */,
+				FC6BD4092CD9059800A71251 /* main.m in Sources */,
+				FC6BD41B2CD9603300A71251 /* ScalingViewController.m in Sources */,
+				FC6BD4172CD912B800A71251 /* AirplaneView.m in Sources */,
+				FC6BD4182CD912B800A71251 /* CGPathTransformer.m in Sources */,
+				FC6BD3FF2CD9059600A71251 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FC6BD4052CD9059800A71251 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC6BD4062CD9059800A71251 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC6BD40B2CD9059800A71251 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FC6BD40C2CD9059800A71251 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FC6BD40E2CD9059800A71251 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AirplanePath/AirplanePath.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DonMag.AirplanePath;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		FC6BD40F2CD9059800A71251 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AirplanePath/AirplanePath.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DonMag.AirplanePath;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC6BD3F52CD9059600A71251 /* Build configuration list for PBXProject "AirplanePath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC6BD40B2CD9059800A71251 /* Debug */,
+				FC6BD40C2CD9059800A71251 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC6BD40D2CD9059800A71251 /* Build configuration list for PBXNativeTarget "AirplanePath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC6BD40E2CD9059800A71251 /* Debug */,
+				FC6BD40F2CD9059800A71251 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC6BD3F22CD9059600A71251 /* Project object */;
+}
