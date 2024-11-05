@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C4076B92CDA737A00CF7E9D /* PDFExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076B82CDA737A00CF7E9D /* PDFExtractor.m */; };
+		7C4076BB2CDA73EB00CF7E9D /* AW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C4076BA2CDA73EB00CF7E9D /* AW109.pdf */; };
+		7C4076BE2CDA855900CF7E9D /* ImgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076BD2CDA855900CF7E9D /* ImgVC.m */; };
+		7C4076C22CDA889400CF7E9D /* LineSegObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076C12CDA889400CF7E9D /* LineSegObj.m */; };
+		7C4076C52CDA8F1B00CF7E9D /* AirplaneImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076C42CDA8F1B00CF7E9D /* AirplaneImageView.m */; };
 		FC6BD3FF2CD9059600A71251 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD3FE2CD9059600A71251 /* AppDelegate.m */; };
 		FC6BD4022CD9059600A71251 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4012CD9059600A71251 /* ViewController.m */; };
 		FC6BD4042CD9059700A71251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4032CD9059700A71251 /* Assets.xcassets */; };
@@ -19,6 +24,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C4076B72CDA737A00CF7E9D /* PDFExtractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFExtractor.h; sourceTree = "<group>"; };
+		7C4076B82CDA737A00CF7E9D /* PDFExtractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFExtractor.m; sourceTree = "<group>"; };
+		7C4076BA2CDA73EB00CF7E9D /* AW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AW109.pdf; sourceTree = "<group>"; };
+		7C4076BC2CDA855900CF7E9D /* ImgVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImgVC.h; sourceTree = "<group>"; };
+		7C4076BD2CDA855900CF7E9D /* ImgVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImgVC.m; sourceTree = "<group>"; };
+		7C4076BF2CDA864300CF7E9D /* aLineSeg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aLineSeg.h; sourceTree = "<group>"; };
+		7C4076C02CDA889400CF7E9D /* LineSegObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineSegObj.h; sourceTree = "<group>"; };
+		7C4076C12CDA889400CF7E9D /* LineSegObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineSegObj.m; sourceTree = "<group>"; };
+		7C4076C32CDA8F1B00CF7E9D /* AirplaneImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirplaneImageView.h; sourceTree = "<group>"; };
+		7C4076C42CDA8F1B00CF7E9D /* AirplaneImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirplaneImageView.m; sourceTree = "<group>"; };
 		FC6BD3FA2CD9059600A71251 /* AirplanePath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirplanePath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6BD3FD2CD9059600A71251 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FC6BD3FE2CD9059600A71251 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -72,6 +87,9 @@
 				FC6BD3FE2CD9059600A71251 /* AppDelegate.m */,
 				FC6BD4002CD9059600A71251 /* ViewController.h */,
 				FC6BD4012CD9059600A71251 /* ViewController.m */,
+				7C4076BF2CDA864300CF7E9D /* aLineSeg.h */,
+				7C4076C02CDA889400CF7E9D /* LineSegObj.h */,
+				7C4076C12CDA889400CF7E9D /* LineSegObj.m */,
 				FC6BD4112CD912B700A71251 /* AirplaneCGPath.h */,
 				FC6BD4122CD912B700A71251 /* AirplaneCGPath.m */,
 				FC6BD4102CD912B700A71251 /* AirplaneView.h */,
@@ -80,10 +98,17 @@
 				FC6BD4152CD912B800A71251 /* CGPathTransformer.m */,
 				FC6BD4192CD9603300A71251 /* ScalingViewController.h */,
 				FC6BD41A2CD9603300A71251 /* ScalingViewController.m */,
+				7C4076B72CDA737A00CF7E9D /* PDFExtractor.h */,
+				7C4076B82CDA737A00CF7E9D /* PDFExtractor.m */,
+				7C4076BC2CDA855900CF7E9D /* ImgVC.h */,
+				7C4076BD2CDA855900CF7E9D /* ImgVC.m */,
+				7C4076C32CDA8F1B00CF7E9D /* AirplaneImageView.h */,
+				7C4076C42CDA8F1B00CF7E9D /* AirplaneImageView.m */,
 				FC6BD4032CD9059700A71251 /* Assets.xcassets */,
 				FC6BD4052CD9059800A71251 /* Main.storyboard */,
 				FC6BD4082CD9059800A71251 /* main.m */,
 				FC6BD40A2CD9059800A71251 /* AirplanePath.entitlements */,
+				7C4076BA2CDA73EB00CF7E9D /* AW109.pdf */,
 			);
 			path = AirplanePath;
 			sourceTree = "<group>";
@@ -145,6 +170,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C4076BB2CDA73EB00CF7E9D /* AW109.pdf in Resources */,
 				FC6BD4042CD9059700A71251 /* Assets.xcassets in Resources */,
 				FC6BD4072CD9059800A71251 /* Main.storyboard in Resources */,
 			);
@@ -157,13 +183,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C4076BE2CDA855900CF7E9D /* ImgVC.m in Sources */,
 				FC6BD4022CD9059600A71251 /* ViewController.m in Sources */,
 				FC6BD4162CD912B800A71251 /* AirplaneCGPath.m in Sources */,
 				FC6BD4092CD9059800A71251 /* main.m in Sources */,
 				FC6BD41B2CD9603300A71251 /* ScalingViewController.m in Sources */,
 				FC6BD4172CD912B800A71251 /* AirplaneView.m in Sources */,
+				7C4076C52CDA8F1B00CF7E9D /* AirplaneImageView.m in Sources */,
 				FC6BD4182CD912B800A71251 /* CGPathTransformer.m in Sources */,
 				FC6BD3FF2CD9059600A71251 /* AppDelegate.m in Sources */,
+				7C4076B92CDA737A00CF7E9D /* PDFExtractor.m in Sources */,
+				7C4076C22CDA889400CF7E9D /* LineSegObj.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

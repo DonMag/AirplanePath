@@ -9,6 +9,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AirplaneView.h"
 
+#import "PDFExtractor.h"
+
 @interface ScalingViewController ()
 
 @end
@@ -21,10 +23,35 @@
 	// Set background color of the view
 	self.view.wantsLayer = YES;
 	self.view.layer.backgroundColor = [[NSColor colorWithWhite:0.95 alpha:1.0] CGColor];
+	self.view.layer.backgroundColor = [[NSColor systemYellowColor] CGColor];
 	
 }
 - (void)viewDidAppear {
 	[super viewDidAppear];
+	
+	NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:@"AW109" withExtension:@"pdf"];
+	
+	NSArray<NSBezierPath *> *bezvectorPaths = [PDFExtractor bezextractVectorPathsFromPDF:pdfURL];
+
+	NSLog(@"Extracted %lu vector paths.", (unsigned long)bezvectorPaths.count);
+
+	NSArray<id> *vectorPaths = [PDFExtractor extractVectorPathsFromPDF:pdfURL];
+	
+	NSLog(@"Extracted %lu vector paths.", (unsigned long)vectorPaths.count);
+	
+	CAShapeLayer *s = [CAShapeLayer new];
+	s.strokeColor = NSColor.redColor.CGColor;
+	s.fillColor = NSColor.yellowColor.CGColor;
+	s.lineWidth = 2.0;
+	
+//	s.path = [[bezvectorPaths objectAtIndex:12] CGPath];
+//	CGRect rr = CGPathGetBoundingBox(s.path);
+//	NSLog(@"%@", [NSValue valueWithRect:rr]);
+	
+	s.path = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);
+	[self.view.layer addSublayer:s];
+	return;
+	
 	
 	NSArray<NSColor *> *fillColors = @[
 		[NSColor colorWithRed:1.00 green:0.75 blue:0.75 alpha:1.0],

@@ -690,24 +690,22 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="520" height="360"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="520" height="360"/>
-                        <value key="maxSize" type="size" width="520" height="360"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="ydC-4u-n5a"/>
+                        <segue destination="E9v-F7-YkD" kind="relationship" relationship="window.shadowedContentViewController" id="3RX-pU-cYe"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Scaling View Controller-->
+        <!--ImgVC-->
         <scene sceneID="PAO-UG-pUA">
             <objects>
-                <viewController id="E9v-F7-YkD" customClass="ScalingViewController" sceneMemberID="viewController">
+                <viewController id="E9v-F7-YkD" customClass="ImgVC" sceneMemberID="viewController">
                     <view key="view" id="qLI-iK-Qlg">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -715,7 +713,7 @@
                 </viewController>
                 <customObject id="uPu-xC-KiH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="675" y="363"/>
+            <point key="canvasLocation" x="675" y="525"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
