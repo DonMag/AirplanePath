@@ -36,6 +36,11 @@
 	];
 	
 	NSArray<NSColor *> *strokeColors = @[
+		[NSColor redColor],
+		[NSColor systemGreenColor],
+		[NSColor blueColor],
+		[NSColor systemYellowColor],
+		
 		[NSColor colorWithRed:0.50 green:0.00 blue:0.00 alpha:1.0],
 		[NSColor colorWithRed:0.00 green:0.50 blue:0.00 alpha:1.0],
 		[NSColor colorWithRed:1.00 green:0.00 blue:0.00 alpha:1.0],
@@ -54,11 +59,16 @@
 		// create AirplaneView and add to airplanesView
 		AirplaneView *v = [[AirplaneView alloc] initWithFrame:r];
 		[self.view addSubview:v];
+		
 		v.fillColor = [fillColors objectAtIndex:i % fillColors.count];
 		v.strokeColor = [strokeColors objectAtIndex:i % strokeColors.count];
 		v.strokeWidth = 1.0;
 
-		x += sz * 0.5;
+		v.fillColor = [fillColors objectAtIndex:i % fillColors.count];
+		v.fillColor = [strokeColors objectAtIndex:i % strokeColors.count];
+		v.strokeWidth = 1.0;
+		
+		x += sz * 0.5 + 8.0;
 		y -= (sz + 20.0);
 		sz *= 2.0;
 	}
