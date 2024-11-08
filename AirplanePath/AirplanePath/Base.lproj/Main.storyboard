@@ -702,10 +702,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Scaling View Controller-->
+        <!--ImgVC-->
         <scene sceneID="PAO-UG-pUA">
             <objects>
-                <viewController id="E9v-F7-YkD" customClass="ScalingViewController" sceneMemberID="viewController">
+                <viewController id="E9v-F7-YkD" customClass="ImgVC" sceneMemberID="viewController">
                     <view key="view" id="qLI-iK-Qlg">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

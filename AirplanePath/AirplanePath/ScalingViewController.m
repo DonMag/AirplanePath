@@ -13,7 +13,10 @@
 #import "AirplaneCGPath.h"
 
 @interface ScalingViewController ()
-
+{
+	NSView *goodView;
+	NSView *badView;
+}
 @end
 
 @implementation ScalingViewController
@@ -92,7 +95,11 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 	
 }
 - (void)mouseUp:(NSEvent *)event {
-	[self scaleFirst];
+	if (self.view.subviews.count < 2) {
+		[self scaleFirst];
+	}
+	goodView.hidden = !goodView.hidden;
+	badView.hidden = !goodView.hidden;
 }
 - (void)scaleFirst {
 
@@ -105,7 +112,6 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 	];
 	
 	NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:@"AW109" withExtension:@"pdf"];
-	pdfURL = [[NSBundle mainBundle] URLForResource:@"zAW109" withExtension:@"pdf"];
 	
 	NSArray<id> *vectorPaths;
 
@@ -119,6 +125,19 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 	CGPathRef fullpth;
 	NSArray *subpaths;
 	NSInteger i;
+	
+	goodView = [NSView new];
+	badView = [NSView new];
+	goodView.wantsLayer = YES;
+	badView.wantsLayer = YES;
+	
+	goodView.frame = self.view.frame;
+	[self.view addSubview:goodView];
+
+	badView.frame = self.view.frame;
+	[self.view addSubview:badView];
+	
+	pdfURL = [[NSBundle mainBundle] URLForResource:@"zAW109" withExtension:@"pdf"];
 	
 	vectorPaths = [PDFExtractor extractVectorPathsFromPDF:pdfURL];
 	
@@ -140,9 +159,8 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 		
 		NSView *v = [NSView new];
 		v.wantsLayer = YES;
-		//v.layer.backgroundColor = NSColor.yellowColor.CGColor;
 		v.frame = self.view.frame;
-		[self.view addSubview:v];
+		[goodView addSubview:v];
 		
 		CAShapeLayer *s = [CAShapeLayer new];
 		NSColor *c = [layerColors objectAtIndex:i % layerColors.count];
@@ -184,9 +202,8 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 		
 		NSView *v = [NSView new];
 		v.wantsLayer = YES;
-		//v.layer.backgroundColor = NSColor.yellowColor.CGColor;
 		v.frame = self.view.frame;
-		[self.view addSubview:v];
+		[badView addSubview:v];
 		
 		CAShapeLayer *s = [CAShapeLayer new];
 		NSColor *c = [layerColors objectAtIndex:i % layerColors.count];

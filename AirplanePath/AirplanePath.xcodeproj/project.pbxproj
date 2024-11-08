@@ -35,7 +35,6 @@
 		7C4076BA2CDA73EB00CF7E9D /* AW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AW109.pdf; sourceTree = "<group>"; };
 		7C4076BC2CDA855900CF7E9D /* ImgVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImgVC.h; sourceTree = "<group>"; };
 		7C4076BD2CDA855900CF7E9D /* ImgVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImgVC.m; sourceTree = "<group>"; };
-		7C4076BF2CDA864300CF7E9D /* aLineSeg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aLineSeg.h; sourceTree = "<group>"; };
 		7C4076C02CDA889400CF7E9D /* LineSegObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineSegObj.h; sourceTree = "<group>"; };
 		7C4076C12CDA889400CF7E9D /* LineSegObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineSegObj.m; sourceTree = "<group>"; };
 		7C4076C32CDA8F1B00CF7E9D /* AirplaneImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirplaneImageView.h; sourceTree = "<group>"; };
@@ -100,7 +99,6 @@
 				FC6BD3FE2CD9059600A71251 /* AppDelegate.m */,
 				FC6BD4002CD9059600A71251 /* ViewController.h */,
 				FC6BD4012CD9059600A71251 /* ViewController.m */,
-				7C4076BF2CDA864300CF7E9D /* aLineSeg.h */,
 				7C4076C02CDA889400CF7E9D /* LineSegObj.h */,
 				7C4076C12CDA889400CF7E9D /* LineSegObj.m */,
 				FC6BD4112CD912B700A71251 /* AirplaneCGPath.h */,
