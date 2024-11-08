@@ -13,7 +13,7 @@ typedef struct {
 	CGPoint pt1;  // First point of the line segment
 	CGPoint pt2;  // Second point of the line segment
 	CGPoint cp;   // Center point of line segment
-	CGFloat rad;  // Radian (angle of line segment)
+	CGFloat radians;  // Radian (angle of line segment)
 } LineSeg;
 
 @interface LineSegObj : NSObject

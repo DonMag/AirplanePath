@@ -6,6 +6,11 @@
 //
 
 #import "PDFExtractor.h"
+@interface PDFExtractor ()
+{
+	NSString *pthString;
+}
+@end
 
 @implementation PDFExtractor
 /*
@@ -188,6 +193,10 @@ void moveToCallback(CGPDFScannerRef scanner, void *info);
 void lineToCallback(CGPDFScannerRef scanner, void *info);
 void curveToCallback(CGPDFScannerRef scanner, void *info);
 void closePathCallback(CGPDFScannerRef scanner, void *info);
+
+void vPathCallback(CGPDFScannerRef scanner, void *info);
+void yPathCallback(CGPDFScannerRef scanner, void *info);
+
 CGMutablePathRef currentPath = NULL;
 
 + (NSArray<id> *)extractVectorPathsFromPDF:(NSURL *)pdfURL {
@@ -216,6 +225,9 @@ CGMutablePathRef currentPath = NULL;
 		CGPDFOperatorTableSetCallback(operatorTable, "l", &lineToCallback);  // line to
 		CGPDFOperatorTableSetCallback(operatorTable, "c", &curveToCallback); // curve to
 		CGPDFOperatorTableSetCallback(operatorTable, "h", &closePathCallback); // close path
+
+		CGPDFOperatorTableSetCallback(operatorTable, "v", &vPathCallback); // close path
+		CGPDFOperatorTableSetCallback(operatorTable, "y", &yPathCallback); // close path
 		
 		CGPDFScannerRef scanner = CGPDFScannerCreate(contentStream, operatorTable, (__bridge void *)(vectorPaths));
 		
@@ -245,6 +257,8 @@ void moveToCallback(CGPDFScannerRef scanner, void *info) {
 	CGPDFReal x, y;
 	if (CGPDFScannerPopNumber(scanner, &y) && CGPDFScannerPopNumber(scanner, &x)) {
 		CGPathMoveToPoint(currentPath, NULL, x, y);
+		//NSLog(@"moveTo: %f, %f", x, y);
+		NSLog(@"CGPathMoveToPoint(currentPath, NULL, %f, %f);", x, y);
 	}
 }
 
@@ -253,6 +267,8 @@ void lineToCallback(CGPDFScannerRef scanner, void *info) {
 	CGPDFReal x, y;
 	if (CGPDFScannerPopNumber(scanner, &y) && CGPDFScannerPopNumber(scanner, &x)) {
 		CGPathAddLineToPoint(currentPath, NULL, x, y);
+		//NSLog(@"lineTo: %f, %f", x, y);
+		NSLog(@"CGPathAddLineToPoint(currentPath, NULL, %f, %f);", x, y);
 	}
 }
 
@@ -263,12 +279,38 @@ void curveToCallback(CGPDFScannerRef scanner, void *info) {
 		CGPDFScannerPopNumber(scanner, &y2) && CGPDFScannerPopNumber(scanner, &x2) &&
 		CGPDFScannerPopNumber(scanner, &y1) && CGPDFScannerPopNumber(scanner, &x1)) {
 		CGPathAddCurveToPoint(currentPath, NULL, x1, y1, x2, y2, x3, y3);
+		//NSLog(@"curveTo: %f, %f : %f, %f : %f, %f", x1, y1, x2, y2, x3, y3);
+		NSLog(@"CGPathAddCurveToPoint(currentPath, NULL, %f, %f, %f, %f, %f, %f);", x1, y1, x2, y2, x3, y3);
+	}
+}
+
+void vPathCallback(CGPDFScannerRef scanner, void *info) {
+	CGPDFReal x1, y1, x2, y2, x3, y3;
+	if (CGPDFScannerPopNumber(scanner, &y3) && CGPDFScannerPopNumber(scanner, &x3) &&
+		CGPDFScannerPopNumber(scanner, &y2) && CGPDFScannerPopNumber(scanner, &x2) &&
+		CGPDFScannerPopNumber(scanner, &y1) && CGPDFScannerPopNumber(scanner, &x1)) {
+		//CGPathAddCurveToPoint(currentPath, NULL, x1, y1, x2, y2, x3, y3);
+		NSLog(@"v    : %f, %f : %f, %f : %f, %f", x1, y1, x2, y2, x3, y3);
+	}
+}
+
+void yPathCallback(CGPDFScannerRef scanner, void *info) {
+	CGPDFReal x1, y1, x2, y2, x3, y3;
+	if (CGPDFScannerPopNumber(scanner, &y3) && CGPDFScannerPopNumber(scanner, &x3) &&
+		CGPDFScannerPopNumber(scanner, &y2) && CGPDFScannerPopNumber(scanner, &x2) &&
+		CGPDFScannerPopNumber(scanner, &y1) && CGPDFScannerPopNumber(scanner, &x1)) {
+		//CGPathAddCurveToPoint(currentPath, NULL, x1, y1, x2, y2, x3, y3);
+		NSLog(@"y    : %f, %f : %f, %f : %f, %f", x1, y1, x2, y2, x3, y3);
 	}
 }
 
 // Callback for "close path" operator
 void closePathCallback(CGPDFScannerRef scanner, void *info) {
 	CGPathCloseSubpath(currentPath);
+	//NSLog(@"closeSub");
+	NSLog(@"CGPathCloseSubpath(currentPath);");
 }
+
+
 
 @end

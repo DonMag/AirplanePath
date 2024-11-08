@@ -7,6 +7,7 @@
 
 #import "AirplaneImageView.h"
 
+
 @interface AirplaneImageView ()
 {
 	CGFloat rotationRadians;
@@ -44,6 +45,7 @@
 	[super drawRect:dirtyRect];
 
 }
+
 - (void)setupView {
 	self.wantsLayer = YES;
 	self.imageScaling = NSImageScaleProportionallyUpOrDown;

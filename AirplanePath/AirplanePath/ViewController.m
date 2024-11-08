@@ -119,7 +119,7 @@
 		[self.view addSubview:v];
 		
 		// set the rotation
-		[v rotateByRadians:lineSeg.rad];
+		[v rotateByRadians:lineSeg.radians];
 		
 		v.strokeWidth = airplaneStrokeWidth;
 		
