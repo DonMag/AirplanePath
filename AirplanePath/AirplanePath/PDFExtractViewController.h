@@ -1,5 +1,5 @@
 //
-//  ScalingViewController.h
+//  PDFExtractViewController.h
 //  AirplanePath
 //
 //  Created by Don Mag on 11/4/24.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ScalingViewController : NSViewController
+@interface PDFExtractViewController : NSViewController
 
 @end
 

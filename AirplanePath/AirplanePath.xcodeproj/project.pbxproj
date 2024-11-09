@@ -20,13 +20,14 @@
 		FC6BD4162CD912B800A71251 /* AirplaneCGPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4122CD912B700A71251 /* AirplaneCGPath.m */; };
 		FC6BD4172CD912B800A71251 /* AirplaneView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4132CD912B800A71251 /* AirplaneView.m */; };
 		FC6BD4182CD912B800A71251 /* CGPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4152CD912B800A71251 /* CGPathTransformer.m */; };
-		FC6BD41B2CD9603300A71251 /* ScalingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD41A2CD9603300A71251 /* ScalingViewController.m */; };
+		FC6BD41B2CD9603300A71251 /* PDFExtractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD41A2CD9603300A71251 /* PDFExtractViewController.m */; };
 		FC6BD4442CDCFBDD00A71251 /* PDFDrawVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4432CDCFBDD00A71251 /* PDFDrawVC.m */; };
 		FC6BD4462CDD31FB00A71251 /* myairplane.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4452CDD31FA00A71251 /* myairplane.pdf */; };
 		FC6BD4482CDD34C500A71251 /* AC130.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4472CDD34C500A71251 /* AC130.pdf */; };
 		FC6BD44A2CDE479E00A71251 /* MyAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4492CDE479E00A71251 /* MyAW109.pdf */; };
 		FC6BD44E2CDE4A1800A71251 /* zAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD44D2CDE4A1800A71251 /* zAW109.pdf */; };
 		FC6BD4502CDE4F0C00A71251 /* sAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD44F2CDE4F0C00A71251 /* sAW109.pdf */; };
+		FC6BD4532CDFAF4600A71251 /* FlightPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4522CDFAF4600A71251 /* FlightPath.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,8 +55,8 @@
 		FC6BD4132CD912B800A71251 /* AirplaneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirplaneView.m; sourceTree = "<group>"; };
 		FC6BD4142CD912B800A71251 /* CGPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPathTransformer.h; sourceTree = "<group>"; };
 		FC6BD4152CD912B800A71251 /* CGPathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPathTransformer.m; sourceTree = "<group>"; };
-		FC6BD4192CD9603300A71251 /* ScalingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScalingViewController.h; sourceTree = "<group>"; };
-		FC6BD41A2CD9603300A71251 /* ScalingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScalingViewController.m; sourceTree = "<group>"; };
+		FC6BD4192CD9603300A71251 /* PDFExtractViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFExtractViewController.h; sourceTree = "<group>"; };
+		FC6BD41A2CD9603300A71251 /* PDFExtractViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFExtractViewController.m; sourceTree = "<group>"; };
 		FC6BD4422CDCFBDD00A71251 /* PDFDrawVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFDrawVC.h; sourceTree = "<group>"; };
 		FC6BD4432CDCFBDD00A71251 /* PDFDrawVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFDrawVC.m; sourceTree = "<group>"; };
 		FC6BD4452CDD31FA00A71251 /* myairplane.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = myairplane.pdf; sourceTree = "<group>"; };
@@ -63,6 +64,8 @@
 		FC6BD4492CDE479E00A71251 /* MyAW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = MyAW109.pdf; sourceTree = "<group>"; };
 		FC6BD44D2CDE4A1800A71251 /* zAW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = zAW109.pdf; sourceTree = "<group>"; };
 		FC6BD44F2CDE4F0C00A71251 /* sAW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sAW109.pdf; sourceTree = "<group>"; };
+		FC6BD4512CDFAF4600A71251 /* FlightPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightPath.h; sourceTree = "<group>"; };
+		FC6BD4522CDFAF4600A71251 /* FlightPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightPath.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +104,16 @@
 				FC6BD4012CD9059600A71251 /* ViewController.m */,
 				7C4076C02CDA889400CF7E9D /* LineSegObj.h */,
 				7C4076C12CDA889400CF7E9D /* LineSegObj.m */,
+				FC6BD4512CDFAF4600A71251 /* FlightPath.h */,
+				FC6BD4522CDFAF4600A71251 /* FlightPath.m */,
 				FC6BD4112CD912B700A71251 /* AirplaneCGPath.h */,
 				FC6BD4122CD912B700A71251 /* AirplaneCGPath.m */,
 				FC6BD4102CD912B700A71251 /* AirplaneView.h */,
 				FC6BD4132CD912B800A71251 /* AirplaneView.m */,
 				FC6BD4142CD912B800A71251 /* CGPathTransformer.h */,
 				FC6BD4152CD912B800A71251 /* CGPathTransformer.m */,
-				FC6BD4192CD9603300A71251 /* ScalingViewController.h */,
-				FC6BD41A2CD9603300A71251 /* ScalingViewController.m */,
+				FC6BD4192CD9603300A71251 /* PDFExtractViewController.h */,
+				FC6BD41A2CD9603300A71251 /* PDFExtractViewController.m */,
 				7C4076B72CDA737A00CF7E9D /* PDFExtractor.h */,
 				7C4076B82CDA737A00CF7E9D /* PDFExtractor.m */,
 				7C4076BC2CDA855900CF7E9D /* ImgVC.h */,
@@ -210,9 +215,10 @@
 				FC6BD4022CD9059600A71251 /* ViewController.m in Sources */,
 				FC6BD4162CD912B800A71251 /* AirplaneCGPath.m in Sources */,
 				FC6BD4092CD9059800A71251 /* main.m in Sources */,
-				FC6BD41B2CD9603300A71251 /* ScalingViewController.m in Sources */,
+				FC6BD41B2CD9603300A71251 /* PDFExtractViewController.m in Sources */,
 				FC6BD4172CD912B800A71251 /* AirplaneView.m in Sources */,
 				7C4076C52CDA8F1B00CF7E9D /* AirplaneImageView.m in Sources */,
+				FC6BD4532CDFAF4600A71251 /* FlightPath.m in Sources */,
 				FC6BD4442CDCFBDD00A71251 /* PDFDrawVC.m in Sources */,
 				FC6BD4182CD912B800A71251 /* CGPathTransformer.m in Sources */,
 				FC6BD3FF2CD9059600A71251 /* AppDelegate.m in Sources */,

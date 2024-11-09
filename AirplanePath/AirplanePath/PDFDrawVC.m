@@ -8,6 +8,7 @@
 #import "PDFDrawVC.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LineSegObj.h"
+#import "FlightPath.h"
 
 #define FatalError(msg) { NSLog(@"Fatal error: %@", msg); assert(false); }
 
@@ -99,40 +100,7 @@
 	// Create and add a CAShapeLayer to the radar image view for the "line path"
 	CAShapeLayer *cLine = [CAShapeLayer layer];
 	
-	CGPoint pt1, pt2;
-	
-	// Create a mutable array to hold LineSeg structures
-	NSMutableArray<NSValue *> *lineSegmentsArray = [NSMutableArray array];
-
-	// create some example line segments
-	
-	pt1 = CGPointMake( 20.0,  20.0);
-	pt2 = CGPointMake( 60.0, 160.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(160.0, 280.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(340.0, 280.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(400.0, 100.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(250.0,  50.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(170.0, 150.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(240.0, 220.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
+	NSMutableArray<NSValue *> *lineSegmentsArray = [FlightPath sampleFlightPath];
 	
 	CGMutablePathRef linePath = CGPathCreateMutable();
 	

@@ -36,7 +36,7 @@
 	NSAffineTransform *transform = [[NSAffineTransform alloc] init];
 	[transform translateXBy:self.bounds.size.width / 2 yBy:self.bounds.size.height / 2];
 	// Apply rotation
-	[transform rotateByRadians:rotationRadians];
+	[transform rotateByRadians:-rotationRadians];
 	// Translate back
 	[transform translateXBy:-self.bounds.size.width / 2 yBy:-self.bounds.size.height / 2];
 

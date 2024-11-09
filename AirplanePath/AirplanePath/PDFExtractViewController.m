@@ -5,21 +5,21 @@
 //  Created by Don Mag on 11/4/24.
 //
 
-#import "ScalingViewController.h"
+#import "PDFExtractViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 #import "CGPathTransformer.h"
 #import "PDFExtractor.h"
 #import "AirplaneCGPath.h"
 
-@interface ScalingViewController ()
+@interface PDFExtractViewController ()
 {
 	NSView *goodView;
 	NSView *badView;
 }
 @end
 
-@implementation ScalingViewController
+@implementation PDFExtractViewController
 
 // Structure to hold both the array and current path during traversal
 typedef struct {
@@ -85,6 +85,25 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 	return [subpathsArray copy];
 }
 
+CGRect scaleRectToFitTarget(CGRect sourceRect, CGRect targetRect) {
+	// Calculate scale factors for width and height
+	CGFloat widthScale = targetRect.size.width / sourceRect.size.width;
+	CGFloat heightScale = targetRect.size.height / sourceRect.size.height;
+	
+	// Use the smaller scale factor to maintain aspect ratio
+	CGFloat scaleFactor = MIN(widthScale, heightScale);
+	
+	// Calculate the new width and height with the chosen scale factor
+	CGFloat newWidth = sourceRect.size.width * scaleFactor;
+	CGFloat newHeight = sourceRect.size.height * scaleFactor;
+	
+	// Center the scaled rect within the target rect
+	CGFloat newX = targetRect.origin.x + (targetRect.size.width - newWidth) / 2.0;
+	CGFloat newY = targetRect.origin.y + (targetRect.size.height - newHeight) / 2.0;
+	
+	// Return the scaled and centered rect
+	return CGRectMake(newX, newY, newWidth, newHeight);
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -115,14 +134,13 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 	
 	NSArray<id> *vectorPaths;
 
-	CAShapeLayer *s;
 	CGPathRef pth;
 	NSRect pr;
-	CGFloat fsz;
-	CGRect scRect;
+	CGFloat targSize;
+	CGRect targRect;
+	CGRect scaledRect;
 	CGPathRef spth;
 
-	CGPathRef fullpth;
 	NSArray *subpaths;
 	NSInteger i;
 	
@@ -131,23 +149,40 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 	goodView.wantsLayer = YES;
 	badView.wantsLayer = YES;
 	
-	goodView.frame = self.view.frame;
+	goodView.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.view addSubview:goodView];
 
-	badView.frame = self.view.frame;
+	badView.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.view addSubview:badView];
 	
+	NSView *g = self.view;
+	[NSLayoutConstraint activateConstraints:@[
+
+		[goodView.topAnchor constraintEqualToAnchor:g.topAnchor constant:0.0],
+		[goodView.leadingAnchor constraintEqualToAnchor:g.leadingAnchor constant:0.0],
+		[goodView.trailingAnchor constraintEqualToAnchor:g.trailingAnchor constant:0.0],
+		[goodView.bottomAnchor constraintEqualToAnchor:g.bottomAnchor constant:0.0],
+		
+		[badView.topAnchor constraintEqualToAnchor:g.topAnchor constant:0.0],
+		[badView.leadingAnchor constraintEqualToAnchor:g.leadingAnchor constant:0.0],
+		[badView.trailingAnchor constraintEqualToAnchor:g.trailingAnchor constant:0.0],
+		[badView.bottomAnchor constraintEqualToAnchor:g.bottomAnchor constant:0.0],
+
+	]];
+
+	targSize = 400.0;
+	targRect = CGRectMake(0.0, 0.0, targSize, targSize);
+
+	// fixed PDF - does not generate errors
 	pdfURL = [[NSBundle mainBundle] URLForResource:@"zAW109" withExtension:@"pdf"];
 	
 	vectorPaths = [PDFExtractor extractVectorPathsFromPDF:pdfURL];
 	
 	pth = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);
 	pr = CGPathGetPathBoundingBox(pth);
+	scaledRect = scaleRectToFitTarget(pr, targRect);
 
-	fsz = 400.0;
-	scRect = CGRectMake(0.0, 0.0, fsz, fsz);
-
-	spth = [CGPathTransformer pathInTargetRect:scRect withPath:pth];
+	spth = [CGPathTransformer pathInTargetRect:scaledRect withPath:pth];
 
 	subpaths = splitPathIntoSubpaths(spth);
 	
@@ -159,9 +194,17 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 		
 		NSView *v = [NSView new];
 		v.wantsLayer = YES;
-		v.frame = self.view.frame;
+		v.translatesAutoresizingMaskIntoConstraints = NO;
 		[goodView addSubview:v];
-		
+
+		NSView *g = goodView;
+		[NSLayoutConstraint activateConstraints:@[
+			[v.topAnchor constraintEqualToAnchor:g.topAnchor constant:0.0],
+			[v.leadingAnchor constraintEqualToAnchor:g.leadingAnchor constant:0.0],
+			[v.trailingAnchor constraintEqualToAnchor:g.trailingAnchor constant:0.0],
+			[v.bottomAnchor constraintEqualToAnchor:g.bottomAnchor constant:0.0],
+		]];
+
 		CAShapeLayer *s = [CAShapeLayer new];
 		NSColor *c = [layerColors objectAtIndex:i % layerColors.count];
 		s.strokeColor = c.CGColor; //NSColor.blueColor.CGColor;
@@ -169,17 +212,16 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 		//s.fillColor = NULL;
 		s.lineWidth = 1.0;
 		
-		NSLog(@"sb: %@", [NSValue valueWithRect:CGPathGetPathBoundingBox(subpath)]);
-		
 		s.path = subpath;
 		
 		[v.layer addSublayer:s];
 		s.position = CGPointMake(20.0, 20.0);
 		
-		i++;
+		//i++;
 		
 	}
 	
+	// original PDF - generates errors and bad path
 	pdfURL = [[NSBundle mainBundle] URLForResource:@"AW109" withExtension:@"pdf"];
 
 	vectorPaths = [PDFExtractor extractVectorPathsFromPDF:pdfURL];
@@ -187,10 +229,9 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 	pth = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);
 	pr = CGPathGetPathBoundingBox(pth);
 	
-	fsz = 400.0;
-	scRect = CGRectMake(0.0, 0.0, fsz, fsz);
-
-	spth = [CGPathTransformer pathInTargetRect:scRect withPath:pth];
+	scaledRect = scaleRectToFitTarget(pr, targRect);
+	
+	spth = [CGPathTransformer pathInTargetRect:scaledRect withPath:pth];
 	
 	subpaths = splitPathIntoSubpaths(spth);
 	
@@ -202,9 +243,17 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 		
 		NSView *v = [NSView new];
 		v.wantsLayer = YES;
-		v.frame = self.view.frame;
+		v.translatesAutoresizingMaskIntoConstraints = NO;
 		[badView addSubview:v];
-		
+
+		NSView *g = badView;
+		[NSLayoutConstraint activateConstraints:@[
+			[v.topAnchor constraintEqualToAnchor:g.topAnchor constant:0.0],
+			[v.leadingAnchor constraintEqualToAnchor:g.leadingAnchor constant:0.0],
+			[v.trailingAnchor constraintEqualToAnchor:g.trailingAnchor constant:0.0],
+			[v.bottomAnchor constraintEqualToAnchor:g.bottomAnchor constant:0.0],
+		]];
+
 		CAShapeLayer *s = [CAShapeLayer new];
 		NSColor *c = [layerColors objectAtIndex:i % layerColors.count];
 		s.strokeColor = c.CGColor; //NSColor.blueColor.CGColor;
@@ -212,14 +261,12 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 		//s.fillColor = NULL;
 		s.lineWidth = 1.0;
 		
-		NSLog(@"sb: %@", [NSValue valueWithRect:CGPathGetPathBoundingBox(subpath)]);
-		
 		s.path = subpath;
 		
 		[v.layer addSublayer:s];
 		s.position = CGPointMake(20.0, 20.0);
 		
-		i++;
+		//i++;
 		
 	}
 

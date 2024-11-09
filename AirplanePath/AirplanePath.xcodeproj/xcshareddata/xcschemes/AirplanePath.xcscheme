@@ -51,7 +51,7 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "CG_PDF_VERBOSE"
+            key = "xCG_PDF_VERBOSE"
             value = "1"
             isEnabled = "YES">
          </EnvironmentVariable>

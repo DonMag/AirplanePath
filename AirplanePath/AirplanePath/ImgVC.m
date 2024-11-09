@@ -8,6 +8,7 @@
 #import "ImgVC.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LineSegObj.h"
+#import "FlightPath.h"
 #import "AirplaneImageView.h"
 
 @interface ImgVC ()
@@ -50,36 +51,7 @@
 	cLine.strokeColor = [linePathColor CGColor];
 	[self.view.layer addSublayer:cLine];
 	
-	CGPoint pt1, pt2;
-	
-	// Create a mutable array to hold LineSeg structures
-	NSMutableArray<NSValue *> *lineSegmentsArray = [NSMutableArray array];
-	
-	// create some example line segments
-	
-	pt1 = CGPointMake( 40.0,  40.0);
-	pt2 = CGPointMake( 80.0, 120.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(180.0, 160.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(280.0, 300.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(380.0, 300.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(460.0, 220.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(280.0, 60.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
+	NSMutableArray<NSValue *> *lineSegmentsArray = [FlightPath sampleFlightPath];
 	
 	CGMutablePathRef linePath = CGPathCreateMutable();
 	
@@ -101,8 +73,6 @@
 		[NSColor colorWithRed:0.00 green:0.00 blue:1.00 alpha:1.0],
 	];
 	
-//	NSImage *img = [NSImage imageNamed:@"HAW109"];
-	
 	NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"AW109" ofType:@"pdf"];
 	NSImage *img = [[NSImage alloc] initWithContentsOfFile:imagePath];
 	img.template = YES;
@@ -122,33 +92,14 @@
 		
 		// create AirplaneView and add to airplanesView
 		AirplaneImageView *v = [[AirplaneImageView alloc] initWithFrame:r];
-//		NSImageView *v = [[NSImageView alloc] initWithFrame:r];
 		v.wantsLayer = YES;
 		[v setImage:img];
 		[v setContentTintColor:[strokeColors objectAtIndex:i % strokeColors.count]];
 		[self.view addSubview:v];
 		
-		//[self rotateImageView:v byDegrees:lineSeg.rad];
-//		[self rotateImageView:v byDegrees:45];
-		
-//		[v rotateByAngle:(lineSeg.rad * (180.0 / M_PI)) - 90.0];
-		
-//		[v rotateByAngle:(lineSeg.rad * (180.0 / M_PI))];
-//		[v rotateByAngle:-90.0];
-//		v.layer.backgroundColor = [[NSColor yellowColor] CGColor];
-		
-		[v rotateByRadians:lineSeg.radians - M_PI * 0.5];
-		
-//		CGAffineTransform rTransform = CGAffineTransformMakeRotation(lineSeg.rad);
-//		v.layer.affineTransform = rTransform;
-
-//		// set the rotation
-//		[v rotateByRadians:lineSeg.rad];
-//		
-//		v.strokeWidth = airplaneStrokeWidth;
-//		
-//		v.fillColor = [fillColors objectAtIndex:i % fillColors.count];
-//		v.strokeColor = [strokeColors objectAtIndex:i % strokeColors.count];
+		CGFloat d = (lineSeg.radians * (180.0 / M_PI));
+		NSLog(@"d: %f", d);
+		[v rotateByRadians:lineSeg.radians];
 		
 	}
 	
@@ -156,15 +107,6 @@
 	cLine.path = linePath;
 	
 	CGPathRelease(linePath);
-
-	CGRect r = CGRectMake(20, 20, 400, 1000);
-	AirplaneImageView *v = [[AirplaneImageView alloc] initWithFrame:r];
-	v.imageScaling = NSImageScaleProportionallyUpOrDown;
-	v.wantsLayer = YES;
-	[v setImage:img];
-	[v setContentTintColor:NSColor.redColor];
-	[self.view addSubview:v];
-	
 
 }
 

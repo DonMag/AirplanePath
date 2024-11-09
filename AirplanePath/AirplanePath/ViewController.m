@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LineSegObj.h"
+#import "FlightPath.h"
 #import "AirplaneView.h"
 
 @interface ViewController ()
@@ -50,36 +51,7 @@
 	cLine.strokeColor = [linePathColor CGColor];
 	[self.view.layer addSublayer:cLine];
 	
-	CGPoint pt1, pt2;
-	
-	// Create a mutable array to hold LineSeg structures
-	NSMutableArray<NSValue *> *lineSegmentsArray = [NSMutableArray array];
-	
-	// create some example line segments
-	
-	pt1 = CGPointMake( 40.0,  40.0);
-	pt2 = CGPointMake( 80.0, 120.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(180.0, 160.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(280.0, 300.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(380.0, 300.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(460.0, 220.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
-	
-	pt1 = pt2;
-	pt2 = CGPointMake(280.0, 60.0);
-	[lineSegmentsArray addObject:LineSegToNSValue(LineSegMake(pt1, pt2))];
+	NSMutableArray<NSValue *> *lineSegmentsArray = [FlightPath sampleFlightPath];
 	
 	CGMutablePathRef linePath = CGPathCreateMutable();
 	
