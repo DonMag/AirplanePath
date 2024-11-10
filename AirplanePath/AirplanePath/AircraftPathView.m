@@ -5,19 +5,19 @@
 //  Created by Don Mag on 11/4/24.
 //
 
-#import "AirplaneView.h"
+#import "AircraftPathView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CGPathTransformer.h"
-#import "AirplaneCGPath.h"
+#import "AircraftCGPath.h"
 
-@interface AirplaneView ()
+@interface AircraftPathView ()
 {
 	CGFloat rotationRadians;
 }
 @property (strong, nonatomic) CAShapeLayer *shapeLayer;
 @end
 
-@implementation AirplaneView
+@implementation AircraftPathView
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
 	self = [super initWithFrame:frameRect];
@@ -72,7 +72,7 @@
 	self.shapeLayer.anchorPoint = CGPointMake(0.5, 0.5);
 
 	// get the airplane CGPath
-	CGMutablePathRef pth = [[AirplaneCGPath new] airplanePath];
+	CGMutablePathRef pth = [[AircraftCGPath new] airplanePath];
 	
 	// calculate target rect
 	//	center and maintain aspect ratio

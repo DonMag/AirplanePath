@@ -11,9 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PDFExtractor : NSObject
-+ (NSArray<NSBezierPath *> *)bezextractVectorPathsFromPDF:(NSURL *)pdfURL;
 + (NSArray<id> *)extractVectorPathsFromPDF:(NSURL *)pdfURL;
-
++ (NSImage *)imageFromPDFPage:(NSURL *)pdfURL pageNum:(NSInteger)pageNum targetSize:(CGSize)targetSize rotationRadians:(CGFloat)radians withColor:(NSColor *)withColor;
 @end
 
 NS_ASSUME_NONNULL_END

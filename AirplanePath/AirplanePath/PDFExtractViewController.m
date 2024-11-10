@@ -10,7 +10,7 @@
 
 #import "CGPathTransformer.h"
 #import "PDFExtractor.h"
-#import "AirplaneCGPath.h"
+#import "AircraftCGPath.h"
 
 @interface PDFExtractViewController ()
 {
@@ -130,7 +130,7 @@ CGRect scaleRectToFitTarget(CGRect sourceRect, CGRect targetRect) {
 		[NSColor purpleColor],
 	];
 	
-	NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:@"AW109" withExtension:@"pdf"];
+	NSURL *pdfURL;
 	
 	NSArray<id> *vectorPaths;
 
@@ -175,7 +175,7 @@ CGRect scaleRectToFitTarget(CGRect sourceRect, CGRect targetRect) {
 
 	// fixed PDF - does not generate errors
 	pdfURL = [[NSBundle mainBundle] URLForResource:@"zAW109" withExtension:@"pdf"];
-	
+
 	vectorPaths = [PDFExtractor extractVectorPathsFromPDF:pdfURL];
 	
 	pth = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);

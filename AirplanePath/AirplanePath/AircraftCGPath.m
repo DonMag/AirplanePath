@@ -5,9 +5,9 @@
 //  Created by Don Mag on 11/4/24.
 //
 
-#import "AirplaneCGPath.h"
+#import "AircraftCGPath.h"
 
-@implementation AirplaneCGPath
+@implementation AircraftCGPath
 
 - (CGMutablePathRef)airplanePath {
 	

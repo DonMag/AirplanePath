@@ -6,70 +6,16 @@
 //
 
 #import "PDFExtractor.h"
+
 @interface PDFExtractor ()
 {
-	NSString *pthString;
 }
 @end
 
 @implementation PDFExtractor
 
+// MARK: extrating CGPath(s) from PDF
 void ExtractPathsFromContent(CGPDFScannerRef scanner, void *info);
-
-+ (NSArray<NSBezierPath *> *)bezextractVectorPathsFromPDF:(NSURL *)pdfURL {
-	PDFDocument *pdfDocument = [[PDFDocument alloc] initWithURL:pdfURL];
-	if (!pdfDocument) {
-		NSLog(@"Unable to load PDF document.");
-		return nil;
-	}
-	
-	NSMutableArray<NSBezierPath *> *vectorPaths = [NSMutableArray array];
-	
-	// Iterate through all pages in the PDF document
-	for (NSInteger pageIndex = 0; pageIndex < pdfDocument.pageCount; pageIndex++) {
-		PDFPage *pdfPage = [pdfDocument pageAtIndex:pageIndex];
-		if (!pdfPage) continue;
-		
-		CGPDFPageRef cgPage = pdfPage.pageRef;
-		if (!cgPage) continue;
-		
-		// Set up the scanner to process PDF content streams
-		CGPDFContentStreamRef contentStream = CGPDFContentStreamCreateWithPage(cgPage);
-		CGPDFOperatorTableRef operatorTable = CGPDFOperatorTableCreate();
-		
-		// Register custom operator for path extraction
-		CGPDFOperatorTableSetCallback(operatorTable, "m", &ExtractPathsFromContent);  // move to
-		CGPDFOperatorTableSetCallback(operatorTable, "l", &ExtractPathsFromContent);  // line to
-		CGPDFOperatorTableSetCallback(operatorTable, "c", &ExtractPathsFromContent);  // curve to
-		CGPDFOperatorTableSetCallback(operatorTable, "h", &ExtractPathsFromContent);  // close path
-		
-		CGPDFScannerRef scanner = CGPDFScannerCreate(contentStream, operatorTable, (__bridge void *)(vectorPaths));
-		
-		// Scan the PDF content
-		CGPDFScannerScan(scanner);
-		
-		// Clean up
-		CGPDFScannerRelease(scanner);
-		CGPDFContentStreamRelease(contentStream);
-		CGPDFOperatorTableRelease(operatorTable);
-	}
-	
-	return [vectorPaths copy];
-}
-
-// PDF operator callback to extract paths
-void ExtractPathsFromContent(CGPDFScannerRef scanner, void *info) {
-	NSMutableArray<NSBezierPath *> *pathsArray = (__bridge NSMutableArray<NSBezierPath *> *)info;
-	
-	// Here we would interpret and build an NSBezierPath from the PDF operations (m, l, c, h)
-	// This example simply initializes a new path to demonstrate.
-	NSBezierPath *newPath = [NSBezierPath bezierPath];
-	
-	// Placeholder: Append the path with the points as they are scanned from PDF content
-	// Add actual implementation of path building based on PDF drawing operators
-	
-	[pathsArray addObject:newPath];
-}
 
 void moveToCallback(CGPDFScannerRef scanner, void *info);
 void lineToCallback(CGPDFScannerRef scanner, void *info);
@@ -189,6 +135,69 @@ void closePathCallback(CGPDFScannerRef scanner, void *info) {
 	//NSLog(@"CGPathCloseSubpath(currentPath);");
 }
 
+// MARK: generating a scaled, rotated, colored NSImage from PDF
+
++ (NSImage *)imageFromPDFPage:(NSURL *)pdfURL pageNum:(NSInteger)pageNum targetSize:(CGSize)targetSize rotationRadians:(CGFloat)radians withColor:(NSColor *)withColor
+{
+	CFURLRef url = (CFURLRef)CFBridgingRetain(pdfURL);
+	CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL (url);
+	CGPDFPageRef pdfPage = CGPDFDocumentGetPage (pdf, pageNum);
+
+	// Get the PDF page bounding box
+	CGRect mediaBox = CGPDFPageGetBoxRect(pdfPage, kCGPDFMediaBox);
+	
+	// Scale to fit target size while maintaining aspect ratio
+	CGFloat scaleX = targetSize.width / mediaBox.size.width;
+	CGFloat scaleY = targetSize.height / mediaBox.size.height;
+	CGFloat scale = MIN(scaleX, scaleY);
+	
+	// Calculate the rotated bounds size
+	CGFloat rotatedWidth = fabs(mediaBox.size.width * cos(radians)) + fabs(mediaBox.size.height * sin(radians));
+	CGFloat rotatedHeight = fabs(mediaBox.size.height * cos(radians)) + fabs(mediaBox.size.width * sin(radians));
+	
+	// Adjust target size to fit the rotated bounds, scaled appropriately
+	CGSize adjustedSize = CGSizeMake(rotatedWidth * scale, rotatedHeight * scale);
+	
+	// Create a new NSImage with the adjusted size
+	NSImage *image = [[NSImage alloc] initWithSize:adjustedSize];
+	
+	[image lockFocus]; // Start drawing into the NSImage context
+	
+	CGContextRef context = [NSGraphicsContext currentContext].CGContext;
+	
+	// Fill the context with desired color
+	CGContextSetFillColorWithColor(context, withColor.CGColor);
+	CGContextFillRect(context, CGRectMake(0, 0, adjustedSize.width, adjustedSize.height));
+	
+	// Save the initial state of the context
+	CGContextSaveGState(context);
+	
+	// Translate to the center of the adjusted image area
+	CGContextTranslateCTM(context, adjustedSize.width / 2, adjustedSize.height / 2);
+	
+	// Apply rotation
+	CGContextRotateCTM(context, radians);
+	
+	// Apply scaling
+	CGContextScaleCTM(context, scale, scale);
+	
+	// Translate back to align the PDF's origin for drawing
+	CGContextTranslateCTM(context, -mediaBox.size.width / 2, -mediaBox.size.height / 2);
+	
+	// kCGBlendModeDestinationIn
+	//	The destination image wherever both images are opaque, and transparent elsewhere.
+	CGContextSetBlendMode(context, kCGBlendModeDestinationIn);
+	
+	// Draw the PDF page into the context
+	CGContextDrawPDFPage(context, pdfPage);
+	
+	// Restore the original context state
+	CGContextRestoreGState(context);
+	
+	[image unlockFocus]; // Finish drawing into the NSImage context
+	
+	return image;
+}
 
 
 @end

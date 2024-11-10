@@ -11,14 +11,14 @@
 		7C4076BB2CDA73EB00CF7E9D /* AW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C4076BA2CDA73EB00CF7E9D /* AW109.pdf */; };
 		7C4076BE2CDA855900CF7E9D /* ImgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076BD2CDA855900CF7E9D /* ImgVC.m */; };
 		7C4076C22CDA889400CF7E9D /* LineSegObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076C12CDA889400CF7E9D /* LineSegObj.m */; };
-		7C4076C52CDA8F1B00CF7E9D /* AirplaneImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076C42CDA8F1B00CF7E9D /* AirplaneImageView.m */; };
+		7C4076C52CDA8F1B00CF7E9D /* AircraftImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076C42CDA8F1B00CF7E9D /* AircraftImageView.m */; };
 		FC6BD3FF2CD9059600A71251 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD3FE2CD9059600A71251 /* AppDelegate.m */; };
 		FC6BD4022CD9059600A71251 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4012CD9059600A71251 /* ViewController.m */; };
 		FC6BD4042CD9059700A71251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4032CD9059700A71251 /* Assets.xcassets */; };
 		FC6BD4072CD9059800A71251 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4052CD9059800A71251 /* Main.storyboard */; };
 		FC6BD4092CD9059800A71251 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4082CD9059800A71251 /* main.m */; };
-		FC6BD4162CD912B800A71251 /* AirplaneCGPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4122CD912B700A71251 /* AirplaneCGPath.m */; };
-		FC6BD4172CD912B800A71251 /* AirplaneView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4132CD912B800A71251 /* AirplaneView.m */; };
+		FC6BD4162CD912B800A71251 /* AircraftCGPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4122CD912B700A71251 /* AircraftCGPath.m */; };
+		FC6BD4172CD912B800A71251 /* AircraftPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4132CD912B800A71251 /* AircraftPathView.m */; };
 		FC6BD4182CD912B800A71251 /* CGPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4152CD912B800A71251 /* CGPathTransformer.m */; };
 		FC6BD41B2CD9603300A71251 /* PDFExtractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD41A2CD9603300A71251 /* PDFExtractViewController.m */; };
 		FC6BD4442CDCFBDD00A71251 /* PDFDrawVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4432CDCFBDD00A71251 /* PDFDrawVC.m */; };
@@ -28,6 +28,8 @@
 		FC6BD44E2CDE4A1800A71251 /* zAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD44D2CDE4A1800A71251 /* zAW109.pdf */; };
 		FC6BD4502CDE4F0C00A71251 /* sAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD44F2CDE4F0C00A71251 /* sAW109.pdf */; };
 		FC6BD4532CDFAF4600A71251 /* FlightPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4522CDFAF4600A71251 /* FlightPath.m */; };
+		FC6BD4552CDFB4D000A71251 /* ScratchSave in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4542CDFB4D000A71251 /* ScratchSave */; };
+		FC6BD4582CE109CC00A71251 /* MultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4572CE109CC00A71251 /* MultiViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +40,8 @@
 		7C4076BD2CDA855900CF7E9D /* ImgVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImgVC.m; sourceTree = "<group>"; };
 		7C4076C02CDA889400CF7E9D /* LineSegObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineSegObj.h; sourceTree = "<group>"; };
 		7C4076C12CDA889400CF7E9D /* LineSegObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineSegObj.m; sourceTree = "<group>"; };
-		7C4076C32CDA8F1B00CF7E9D /* AirplaneImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirplaneImageView.h; sourceTree = "<group>"; };
-		7C4076C42CDA8F1B00CF7E9D /* AirplaneImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirplaneImageView.m; sourceTree = "<group>"; };
+		7C4076C32CDA8F1B00CF7E9D /* AircraftImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AircraftImageView.h; sourceTree = "<group>"; };
+		7C4076C42CDA8F1B00CF7E9D /* AircraftImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AircraftImageView.m; sourceTree = "<group>"; };
 		FC6BD3FA2CD9059600A71251 /* AirplanePath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirplanePath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6BD3FD2CD9059600A71251 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FC6BD3FE2CD9059600A71251 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -49,10 +51,10 @@
 		FC6BD4062CD9059800A71251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC6BD4082CD9059800A71251 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FC6BD40A2CD9059800A71251 /* AirplanePath.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AirplanePath.entitlements; sourceTree = "<group>"; };
-		FC6BD4102CD912B700A71251 /* AirplaneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirplaneView.h; sourceTree = "<group>"; };
-		FC6BD4112CD912B700A71251 /* AirplaneCGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirplaneCGPath.h; sourceTree = "<group>"; };
-		FC6BD4122CD912B700A71251 /* AirplaneCGPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirplaneCGPath.m; sourceTree = "<group>"; };
-		FC6BD4132CD912B800A71251 /* AirplaneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirplaneView.m; sourceTree = "<group>"; };
+		FC6BD4102CD912B700A71251 /* AircraftPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AircraftPathView.h; sourceTree = "<group>"; };
+		FC6BD4112CD912B700A71251 /* AircraftCGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AircraftCGPath.h; sourceTree = "<group>"; };
+		FC6BD4122CD912B700A71251 /* AircraftCGPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AircraftCGPath.m; sourceTree = "<group>"; };
+		FC6BD4132CD912B800A71251 /* AircraftPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AircraftPathView.m; sourceTree = "<group>"; };
 		FC6BD4142CD912B800A71251 /* CGPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPathTransformer.h; sourceTree = "<group>"; };
 		FC6BD4152CD912B800A71251 /* CGPathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPathTransformer.m; sourceTree = "<group>"; };
 		FC6BD4192CD9603300A71251 /* PDFExtractViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFExtractViewController.h; sourceTree = "<group>"; };
@@ -66,6 +68,9 @@
 		FC6BD44F2CDE4F0C00A71251 /* sAW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sAW109.pdf; sourceTree = "<group>"; };
 		FC6BD4512CDFAF4600A71251 /* FlightPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightPath.h; sourceTree = "<group>"; };
 		FC6BD4522CDFAF4600A71251 /* FlightPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightPath.m; sourceTree = "<group>"; };
+		FC6BD4542CDFB4D000A71251 /* ScratchSave */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScratchSave; sourceTree = "<group>"; };
+		FC6BD4562CE109CC00A71251 /* MultiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiViewController.h; sourceTree = "<group>"; };
+		FC6BD4572CE109CC00A71251 /* MultiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,10 +111,10 @@
 				7C4076C12CDA889400CF7E9D /* LineSegObj.m */,
 				FC6BD4512CDFAF4600A71251 /* FlightPath.h */,
 				FC6BD4522CDFAF4600A71251 /* FlightPath.m */,
-				FC6BD4112CD912B700A71251 /* AirplaneCGPath.h */,
-				FC6BD4122CD912B700A71251 /* AirplaneCGPath.m */,
-				FC6BD4102CD912B700A71251 /* AirplaneView.h */,
-				FC6BD4132CD912B800A71251 /* AirplaneView.m */,
+				FC6BD4112CD912B700A71251 /* AircraftCGPath.h */,
+				FC6BD4122CD912B700A71251 /* AircraftCGPath.m */,
+				FC6BD4102CD912B700A71251 /* AircraftPathView.h */,
+				FC6BD4132CD912B800A71251 /* AircraftPathView.m */,
 				FC6BD4142CD912B800A71251 /* CGPathTransformer.h */,
 				FC6BD4152CD912B800A71251 /* CGPathTransformer.m */,
 				FC6BD4192CD9603300A71251 /* PDFExtractViewController.h */,
@@ -120,8 +125,11 @@
 				7C4076BD2CDA855900CF7E9D /* ImgVC.m */,
 				FC6BD4422CDCFBDD00A71251 /* PDFDrawVC.h */,
 				FC6BD4432CDCFBDD00A71251 /* PDFDrawVC.m */,
-				7C4076C32CDA8F1B00CF7E9D /* AirplaneImageView.h */,
-				7C4076C42CDA8F1B00CF7E9D /* AirplaneImageView.m */,
+				7C4076C32CDA8F1B00CF7E9D /* AircraftImageView.h */,
+				7C4076C42CDA8F1B00CF7E9D /* AircraftImageView.m */,
+				FC6BD4562CE109CC00A71251 /* MultiViewController.h */,
+				FC6BD4572CE109CC00A71251 /* MultiViewController.m */,
+				FC6BD4542CDFB4D000A71251 /* ScratchSave */,
 				FC6BD4032CD9059700A71251 /* Assets.xcassets */,
 				FC6BD4052CD9059800A71251 /* Main.storyboard */,
 				FC6BD4082CD9059800A71251 /* main.m */,
@@ -197,6 +205,7 @@
 				FC6BD4482CDD34C500A71251 /* AC130.pdf in Resources */,
 				7C4076BB2CDA73EB00CF7E9D /* AW109.pdf in Resources */,
 				FC6BD4042CD9059700A71251 /* Assets.xcassets in Resources */,
+				FC6BD4552CDFB4D000A71251 /* ScratchSave in Resources */,
 				FC6BD4072CD9059800A71251 /* Main.storyboard in Resources */,
 				FC6BD44E2CDE4A1800A71251 /* zAW109.pdf in Resources */,
 				FC6BD44A2CDE479E00A71251 /* MyAW109.pdf in Resources */,
@@ -213,16 +222,17 @@
 			files = (
 				7C4076BE2CDA855900CF7E9D /* ImgVC.m in Sources */,
 				FC6BD4022CD9059600A71251 /* ViewController.m in Sources */,
-				FC6BD4162CD912B800A71251 /* AirplaneCGPath.m in Sources */,
+				FC6BD4162CD912B800A71251 /* AircraftCGPath.m in Sources */,
 				FC6BD4092CD9059800A71251 /* main.m in Sources */,
 				FC6BD41B2CD9603300A71251 /* PDFExtractViewController.m in Sources */,
-				FC6BD4172CD912B800A71251 /* AirplaneView.m in Sources */,
-				7C4076C52CDA8F1B00CF7E9D /* AirplaneImageView.m in Sources */,
+				FC6BD4172CD912B800A71251 /* AircraftPathView.m in Sources */,
+				7C4076C52CDA8F1B00CF7E9D /* AircraftImageView.m in Sources */,
 				FC6BD4532CDFAF4600A71251 /* FlightPath.m in Sources */,
 				FC6BD4442CDCFBDD00A71251 /* PDFDrawVC.m in Sources */,
 				FC6BD4182CD912B800A71251 /* CGPathTransformer.m in Sources */,
 				FC6BD3FF2CD9059600A71251 /* AppDelegate.m in Sources */,
 				7C4076B92CDA737A00CF7E9D /* PDFExtractor.m in Sources */,
+				FC6BD4582CE109CC00A71251 /* MultiViewController.m in Sources */,
 				7C4076C22CDA889400CF7E9D /* LineSegObj.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

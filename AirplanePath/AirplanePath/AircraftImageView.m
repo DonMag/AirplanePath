@@ -5,16 +5,16 @@
 //  Created by Don Mag on 11/5/24.
 //
 
-#import "AirplaneImageView.h"
+#import "AircraftImageView.h"
 
 
-@interface AirplaneImageView ()
+@interface AircraftImageView ()
 {
 	CGFloat rotationRadians;
 }
 @end
 
-@implementation AirplaneImageView
+@implementation AircraftImageView
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
 	self = [super initWithFrame:frameRect];
@@ -39,11 +39,8 @@
 	[transform rotateByRadians:-rotationRadians];
 	// Translate back
 	[transform translateXBy:-self.bounds.size.width / 2 yBy:-self.bounds.size.height / 2];
-
 	[transform set];
-	
 	[super drawRect:dirtyRect];
-
 }
 
 - (void)setupView {
@@ -59,5 +56,7 @@
 	rotationRadians = r;
 	[self setNeedsDisplay:YES];
 }
-
+- (void)setFillColor:(NSColor *)fillColor {
+	self.contentTintColor = fillColor;
+}
 @end

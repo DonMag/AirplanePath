@@ -1,19 +1,17 @@
 //
-//  AirplaneView.h
+//  AirplaneImageView.h
 //  AirplanePath
 //
-//  Created by Don Mag on 11/4/24.
+//  Created by Don Mag on 11/5/24.
 //
 
 #import <Cocoa/Cocoa.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AirplaneView : NSView
+@interface AircraftImageView : NSImageView
 
 @property (strong, nonatomic) NSColor *fillColor;
-@property (strong, nonatomic) NSColor *strokeColor;
-@property (assign, readwrite) CGFloat strokeWidth;
 
 - (void)rotateByRadians: (CGFloat)r;
 - (void)rotateByDegrees:(CGFloat)d;

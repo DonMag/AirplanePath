@@ -6,7 +6,11 @@
 //
 
 #import "PDFDrawVC.h"
+
+// needed for FlightPath line CAShapeLayer
 #import <QuartzCore/QuartzCore.h>
+
+#import "PDFExtractor.h"
 #import "LineSegObj.h"
 #import "FlightPath.h"
 
@@ -88,16 +92,9 @@
 	]];
 	
 	// get pdf page
-	NSURL *nsurl = [NSURL fileURLWithPath:imagePath isDirectory:NO];
-	CFURLRef url = (CFURLRef)CFBridgingRetain(nsurl);
-	CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL (url);
-	CGPDFPageRef page = CGPDFDocumentGetPage (pdf, 1);
+	NSURL *pdfUrl = [NSURL fileURLWithPath:imagePath isDirectory:NO];
 	
-	if (!page) {
-		FatalError(@"Could not load AW109.pdf !!");
-	}
-	
-	// Create and add a CAShapeLayer to the radar image view for the "line path"
+	// Create a CAShapeLayer for the "line path"
 	CAShapeLayer *cLine = [CAShapeLayer layer];
 	
 	NSMutableArray<NSValue *> *lineSegmentsArray = [FlightPath sampleFlightPath];
@@ -136,7 +133,7 @@
 		// if image is pointing right instead of up
 		//radians += M_PI * 0.5;
 		
-		NSImage *pdfImg = [self imageFromPDFPage:page targetSize:sz rotationRadians:radians withColor:[airplaneColors objectAtIndex:i % airplaneColors.count]];
+		NSImage *pdfImg = [PDFExtractor imageFromPDFPage:pdfUrl pageNum:1 targetSize:sz rotationRadians:radians withColor:[airplaneColors objectAtIndex:i % airplaneColors.count]];
 		
 		// rect for generated airplane image
 		//	put center AirplaneView at midpoint of line segment
@@ -148,11 +145,11 @@
 	}
 
 	[radarImgView.layer addSublayer:cLine];
-	[cLine setZPosition:10];
+	[cLine setZPosition:1];
 	for (NSInteger i = 0; i < planes.count; i++) {
 		CALayer *c = [planes objectAtIndex:i];
 		[radarImgView.layer addSublayer:c];
-		[c setZPosition:10 + i];
+		[c setZPosition:cLine.zPosition + i];
 	}
 
 	// set the line path properties
@@ -162,64 +159,6 @@
 	cLine.lineWidth = 1;
 	
 	CGPathRelease(linePath);
-}
-
-- (NSImage *)imageFromPDFPage:(CGPDFPageRef)pdfPage targetSize:(CGSize)targetSize rotationRadians:(CGFloat)radians withColor:(NSColor *)withColor
-{
-	// Get the PDF page bounding box
-	CGRect mediaBox = CGPDFPageGetBoxRect(pdfPage, kCGPDFMediaBox);
-	
-	// Scale to fit target size while maintaining aspect ratio
-	CGFloat scaleX = targetSize.width / mediaBox.size.width;
-	CGFloat scaleY = targetSize.height / mediaBox.size.height;
-	CGFloat scale = MIN(scaleX, scaleY);
-	
-	// Calculate the rotated bounds size
-	CGFloat rotatedWidth = fabs(mediaBox.size.width * cos(radians)) + fabs(mediaBox.size.height * sin(radians));
-	CGFloat rotatedHeight = fabs(mediaBox.size.height * cos(radians)) + fabs(mediaBox.size.width * sin(radians));
-	
-	// Adjust target size to fit the rotated bounds, scaled appropriately
-	CGSize adjustedSize = CGSizeMake(rotatedWidth * scale, rotatedHeight * scale);
-	
-	// Create a new NSImage with the adjusted size
-	NSImage *image = [[NSImage alloc] initWithSize:adjustedSize];
-	
-	[image lockFocus]; // Start drawing into the NSImage context
-	
-	CGContextRef context = [NSGraphicsContext currentContext].CGContext;
-	
-	// Fill the context with desired color
-	CGContextSetFillColorWithColor(context, withColor.CGColor);
-	CGContextFillRect(context, CGRectMake(0, 0, adjustedSize.width, adjustedSize.height));
-	
-	// Save the initial state of the context
-	CGContextSaveGState(context);
-	
-	// Translate to the center of the adjusted image area
-	CGContextTranslateCTM(context, adjustedSize.width / 2, adjustedSize.height / 2);
-	
-	// Apply rotation
-	CGContextRotateCTM(context, radians);
-	
-	// Apply scaling
-	CGContextScaleCTM(context, scale, scale);
-	
-	// Translate back to align the PDF's origin for drawing
-	CGContextTranslateCTM(context, -mediaBox.size.width / 2, -mediaBox.size.height / 2);
-	
-	// kCGBlendModeDestinationIn
-	//	The destination image wherever both images are opaque, and transparent elsewhere.
-	CGContextSetBlendMode(context, kCGBlendModeDestinationIn);
-	
-	// Draw the PDF page into the context
-	CGContextDrawPDFPage(context, pdfPage);
-	
-	// Restore the original context state
-	CGContextRestoreGState(context);
-	
-	[image unlockFocus]; // Finish drawing into the NSImage context
-	
-	return image;
 }
 
 - (void)mouseUp:(NSEvent *)event {

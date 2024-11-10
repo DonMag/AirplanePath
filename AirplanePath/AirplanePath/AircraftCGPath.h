@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AirplaneCGPath : NSObject
+@interface AircraftCGPath : NSObject
 - (CGMutablePathRef)airplanePath;
 - (CGMutablePathRef)copterPath;
 @end
