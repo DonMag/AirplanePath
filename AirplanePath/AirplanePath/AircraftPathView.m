@@ -8,7 +8,6 @@
 #import "AircraftPathView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CGPathTransformer.h"
-#import "AircraftCGPath.h"
 
 @interface AircraftPathView ()
 {
@@ -71,12 +70,10 @@
 	[self.shapeLayer setFrame:self.bounds];
 	self.shapeLayer.anchorPoint = CGPointMake(0.5, 0.5);
 
-	// get the airplane CGPath
-	CGMutablePathRef pth = [[AircraftCGPath new] airplanePath];
-	
 	// calculate target rect
 	//	center and maintain aspect ratio
-	CGRect pathRect = CGPathGetBoundingBox(pth);
+	//CGRect pathRect = CGPathGetBoundingBox(pth);
+	CGRect pathRect = CGPathGetBoundingBox(self.thePath);
 	CGRect boundsRect = self.bounds;
 	CGFloat widthScale = boundsRect.size.width / pathRect.size.width;
 	CGFloat heightScale = boundsRect.size.height / pathRect.size.height;
@@ -88,13 +85,13 @@
 	CGRect targRect = CGRectMake(originX, originY, scaledWidth, scaledHeight);
 
 	// transform airplane path to fit
-	CGMutablePathRef cpth2 = [CGPathTransformer pathInTargetRect:targRect withPath:pth];
+	//CGMutablePathRef cpth2 = [CGPathTransformer pathInTargetRect:targRect withPath:pth];
+	CGMutablePathRef cpth2 = [CGPathTransformer pathInTargetRect:targRect withPath:self.thePath];
 	if (cpth2) {
 		self.shapeLayer.path = cpth2;
 	}
 	
 	CGPathRelease(cpth2);
-	CGPathRelease(pth);
 	
 	// rotate the shape layer
 	[self doRotation];

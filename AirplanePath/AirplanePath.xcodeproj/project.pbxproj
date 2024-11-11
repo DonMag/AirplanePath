@@ -30,6 +30,10 @@
 		FC6BD4532CDFAF4600A71251 /* FlightPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4522CDFAF4600A71251 /* FlightPath.m */; };
 		FC6BD4552CDFB4D000A71251 /* ScratchSave in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4542CDFB4D000A71251 /* ScratchSave */; };
 		FC6BD4582CE109CC00A71251 /* MultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4572CE109CC00A71251 /* MultiViewController.m */; };
+		FC6BD45B2CE11E5200A71251 /* CheckerBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD45A2CE11E5200A71251 /* CheckerBoardView.m */; };
+		FC6BD45E2CE11F8B00A71251 /* EasiestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD45D2CE11F8B00A71251 /* EasiestViewController.m */; };
+		FC6BD4602CE26D9E00A71251 /* cpAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD45F2CE26D9E00A71251 /* cpAW109.pdf */; };
+		FC6BD4632CE27F3E00A71251 /* RotatablePDFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4622CE27F3E00A71251 /* RotatablePDFImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +75,13 @@
 		FC6BD4542CDFB4D000A71251 /* ScratchSave */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScratchSave; sourceTree = "<group>"; };
 		FC6BD4562CE109CC00A71251 /* MultiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiViewController.h; sourceTree = "<group>"; };
 		FC6BD4572CE109CC00A71251 /* MultiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiViewController.m; sourceTree = "<group>"; };
+		FC6BD4592CE11E5200A71251 /* CheckerBoardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckerBoardView.h; sourceTree = "<group>"; };
+		FC6BD45A2CE11E5200A71251 /* CheckerBoardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckerBoardView.m; sourceTree = "<group>"; };
+		FC6BD45C2CE11F8B00A71251 /* EasiestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasiestViewController.h; sourceTree = "<group>"; };
+		FC6BD45D2CE11F8B00A71251 /* EasiestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasiestViewController.m; sourceTree = "<group>"; };
+		FC6BD45F2CE26D9E00A71251 /* cpAW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cpAW109.pdf; sourceTree = "<group>"; };
+		FC6BD4612CE27F3E00A71251 /* RotatablePDFImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RotatablePDFImageView.h; sourceTree = "<group>"; };
+		FC6BD4622CE27F3E00A71251 /* RotatablePDFImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RotatablePDFImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +140,12 @@
 				7C4076C42CDA8F1B00CF7E9D /* AircraftImageView.m */,
 				FC6BD4562CE109CC00A71251 /* MultiViewController.h */,
 				FC6BD4572CE109CC00A71251 /* MultiViewController.m */,
+				FC6BD4592CE11E5200A71251 /* CheckerBoardView.h */,
+				FC6BD45A2CE11E5200A71251 /* CheckerBoardView.m */,
+				FC6BD45C2CE11F8B00A71251 /* EasiestViewController.h */,
+				FC6BD45D2CE11F8B00A71251 /* EasiestViewController.m */,
+				FC6BD4612CE27F3E00A71251 /* RotatablePDFImageView.h */,
+				FC6BD4622CE27F3E00A71251 /* RotatablePDFImageView.m */,
 				FC6BD4542CDFB4D000A71251 /* ScratchSave */,
 				FC6BD4032CD9059700A71251 /* Assets.xcassets */,
 				FC6BD4052CD9059800A71251 /* Main.storyboard */,
@@ -140,6 +157,7 @@
 				FC6BD4492CDE479E00A71251 /* MyAW109.pdf */,
 				FC6BD44D2CDE4A1800A71251 /* zAW109.pdf */,
 				FC6BD44F2CDE4F0C00A71251 /* sAW109.pdf */,
+				FC6BD45F2CE26D9E00A71251 /* cpAW109.pdf */,
 			);
 			path = AirplanePath;
 			sourceTree = "<group>";
@@ -207,6 +225,7 @@
 				FC6BD4042CD9059700A71251 /* Assets.xcassets in Resources */,
 				FC6BD4552CDFB4D000A71251 /* ScratchSave in Resources */,
 				FC6BD4072CD9059800A71251 /* Main.storyboard in Resources */,
+				FC6BD4602CE26D9E00A71251 /* cpAW109.pdf in Resources */,
 				FC6BD44E2CDE4A1800A71251 /* zAW109.pdf in Resources */,
 				FC6BD44A2CDE479E00A71251 /* MyAW109.pdf in Resources */,
 				FC6BD4502CDE4F0C00A71251 /* sAW109.pdf in Resources */,
@@ -229,11 +248,14 @@
 				7C4076C52CDA8F1B00CF7E9D /* AircraftImageView.m in Sources */,
 				FC6BD4532CDFAF4600A71251 /* FlightPath.m in Sources */,
 				FC6BD4442CDCFBDD00A71251 /* PDFDrawVC.m in Sources */,
+				FC6BD45B2CE11E5200A71251 /* CheckerBoardView.m in Sources */,
 				FC6BD4182CD912B800A71251 /* CGPathTransformer.m in Sources */,
 				FC6BD3FF2CD9059600A71251 /* AppDelegate.m in Sources */,
 				7C4076B92CDA737A00CF7E9D /* PDFExtractor.m in Sources */,
 				FC6BD4582CE109CC00A71251 /* MultiViewController.m in Sources */,
 				7C4076C22CDA889400CF7E9D /* LineSegObj.m in Sources */,
+				FC6BD45E2CE11F8B00A71251 /* EasiestViewController.m in Sources */,
+				FC6BD4632CE27F3E00A71251 /* RotatablePDFImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

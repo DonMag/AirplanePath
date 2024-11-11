@@ -46,7 +46,9 @@
 - (void)setupView {
 	self.wantsLayer = YES;
 	self.imageScaling = NSImageScaleProportionallyUpOrDown;
-	//self.layer.backgroundColor = [[NSColor cyanColor] CGColor];
+	self.layer.backgroundColor = [[NSColor cyanColor] CGColor];
+	self.layer.masksToBounds = NO;
+	self.clipsToBounds = NO;
 }
 - (void)rotateByDegrees:(CGFloat)d {
 	rotationRadians = d  * (M_PI / 180.0);

@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AircraftPathView : NSView
 
+@property (assign, readwrite) CGPathRef thePath;
+
 @property (strong, nonatomic) NSColor *fillColor;
 @property (strong, nonatomic) NSColor *strokeColor;
 @property (assign, readwrite) CGFloat strokeWidth;

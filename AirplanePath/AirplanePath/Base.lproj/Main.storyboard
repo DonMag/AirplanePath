@@ -702,12 +702,12 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--DrawVC-->
+        <!--Multi View Controller-->
         <scene sceneID="PAO-UG-pUA">
             <objects>
-                <viewController id="E9v-F7-YkD" customClass="PDFDrawVC" sceneMemberID="viewController">
+                <viewController id="E9v-F7-YkD" customClass="MultiViewController" sceneMemberID="viewController">
                     <view key="view" id="qLI-iK-Qlg">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1200" height="1200"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
