@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "PDFExtractor.h"
+#import "CGPathTransformer.h"
 #import "LineSegObj.h"
 #import "FlightPath.h"
 
@@ -42,10 +43,12 @@
 	// size of airplane views (1:1 ratio)
 	//	the airplane path shape will be scaled maintaining proportion
 	aircraftSize = CGSizeMake(40.0, 40.0);
+	//aircraftSize = CGSizeMake(80.0, 80.0);
 
 	NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"AW109" ofType:@"pdf"];
 	//	imagePath = [[NSBundle mainBundle] pathForResource:@"myairplane" ofType:@"pdf"];
 	//	imagePath = [[NSBundle mainBundle] pathForResource:@"AC130" ofType:@"pdf"];
+	imagePath = [[NSBundle mainBundle] pathForResource:@"zAW109" ofType:@"pdf"];
 	if (!imagePath) {
 		FatalError(@"Could not find AW109.pdf !!");
 	}
@@ -141,9 +144,11 @@
 	CGPathRelease(linePath);
 
 	//[self useImageLayers:[radarViews objectAtIndex:0] pdfUrl:pdfUrl];
+	[self usePDFPathLayers:[radarViews objectAtIndex:0] pdfUrl:pdfUrl];
 	//[self usePDFImageClass:[radarViews objectAtIndex:0] pdfUrl:pdfUrl];
-	CGPathRef aPth = [[AircraftCGPath new] copterPath];
-	[self usePathView:[radarViews objectAtIndex:0] aPath:aPth];
+	
+	//CGPathRef aPth = [[AircraftCGPath new] copterPath];
+	//[self usePathView:[radarViews objectAtIndex:0] aPath:aPth];
 }
 
 - (void)useImageLayers:(NSImageView *)rv pdfUrl:(NSURL *)pdfUrl
@@ -183,6 +188,75 @@
 		[radarViews[0].layer addSublayer:c];
 		[c setZPosition:1000 + i];
 	}
+
+}
+
+- (void)usePDFPathLayers:(NSImageView *)rv pdfUrl:(NSURL *)pdfUrl
+{
+	// generate aircraft images from PDF
+	//	set each as content for CALayer
+	//	add CALayer as sublayer for each instance
+	
+	NSArray<id> *vectorPaths = [PDFExtractor extractVectorPathsFromPDF:pdfUrl];
+	CGPathRef pth = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);
+
+	// calculate target rect
+	//	center and maintain aspect ratio
+	//CGRect pathRect = CGPathGetBoundingBox(pth);
+	CGRect pathRect = CGPathGetBoundingBox(pth);
+	CGRect boundsRect = CGRectMake(0, 0, aircraftSize.width, aircraftSize.height);
+	CGFloat widthScale = boundsRect.size.width / pathRect.size.width;
+	CGFloat heightScale = boundsRect.size.height / pathRect.size.height;
+	CGFloat scaleFactor = MIN(widthScale, heightScale);
+	CGFloat scaledWidth = pathRect.size.width * scaleFactor;
+	CGFloat scaledHeight = pathRect.size.height * scaleFactor;
+	CGFloat originX = boundsRect.origin.x + (boundsRect.size.width - scaledWidth) / 2.0;
+	CGFloat originY = boundsRect.origin.y + (boundsRect.size.height - scaledHeight) / 2.0;
+	CGRect targRect = CGRectMake(originX, originY, scaledWidth, scaledHeight);
+	
+	// transform airplane path to fit
+	CGMutablePathRef cpth2 = [CGPathTransformer pathInTargetRect:targRect withPath:pth];
+	if (!cpth2) {
+		return;
+	}
+
+	// array to hold layers
+	NSMutableArray <CALayer *> *planes = [NSMutableArray array];
+	
+	for (NSInteger i = 0; i < lineSegmentsArray.count; i++) {
+		
+		LineSeg lineSeg;
+		[lineSegmentsArray[i] getValue:&lineSeg];
+		
+		// create a scaled, rotated, color image from PDF
+		// CGContextRotateCTM goes counter-clockwise
+		CGFloat radians = -lineSeg.radians;
+		
+		// if image is pointing right instead of up
+		//radians += M_PI * 0.5;
+		
+		// rect for generated aircraft image
+		//	put center image at midpoint of line segment
+		CGRect r = CGRectOffset(boundsRect, lineSeg.cp.x - (boundsRect.size.width * 0.5), lineSeg.cp.y - (boundsRect.size.height * 0.5));
+		CAShapeLayer *c = [CAShapeLayer new];
+		c.frame = r;
+		c.path = cpth2;
+		c.fillColor = [[aircraftColors objectAtIndex:i % aircraftColors.count] CGColor];
+		c.strokeColor = c.fillColor;
+		c.lineWidth = 1.0;
+		CGAffineTransform rTransform = CGAffineTransformMakeRotation(-lineSeg.radians);
+		c.affineTransform = rTransform;
+
+		[planes addObject:c];
+	}
+	
+	for (NSInteger i = 0; i < planes.count; i++) {
+		CALayer *c = [planes objectAtIndex:i];
+		[radarViews[0].layer addSublayer:c];
+		[c setZPosition:1000 + i];
+	}
+	
+	CGPathRelease(cpth2);
 
 }
 
