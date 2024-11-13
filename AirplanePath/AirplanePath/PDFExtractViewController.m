@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "CGPathTransformer.h"
-#import "PDFExtractor.h"
+#import "UtilityMethods.h"
 #import "AircraftCGPath.h"
 
 @interface PDFExtractViewController ()
@@ -176,7 +176,7 @@ CGRect scaleRectToFitTarget(CGRect sourceRect, CGRect targetRect) {
 	// fixed PDF - does not generate errors
 	pdfURL = [[NSBundle mainBundle] URLForResource:@"zAW109" withExtension:@"pdf"];
 
-	vectorPaths = [PDFExtractor extractVectorPathsFromPDF:pdfURL];
+	vectorPaths = [UtilityMethods extractVectorPathsFromPDF:pdfURL];
 	
 	pth = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);
 	pr = CGPathGetPathBoundingBox(pth);
@@ -224,7 +224,7 @@ CGRect scaleRectToFitTarget(CGRect sourceRect, CGRect targetRect) {
 	// original PDF - generates errors and bad path
 	pdfURL = [[NSBundle mainBundle] URLForResource:@"AW109" withExtension:@"pdf"];
 
-	vectorPaths = [PDFExtractor extractVectorPathsFromPDF:pdfURL];
+	vectorPaths = [UtilityMethods extractVectorPathsFromPDF:pdfURL];
 	
 	pth = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);
 	pr = CGPathGetPathBoundingBox(pth);

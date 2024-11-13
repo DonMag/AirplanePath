@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C4076B92CDA737A00CF7E9D /* PDFExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076B82CDA737A00CF7E9D /* PDFExtractor.m */; };
 		7C4076BB2CDA73EB00CF7E9D /* AW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C4076BA2CDA73EB00CF7E9D /* AW109.pdf */; };
 		7C4076BE2CDA855900CF7E9D /* ImgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076BD2CDA855900CF7E9D /* ImgVC.m */; };
 		7C4076C22CDA889400CF7E9D /* LineSegObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4076C12CDA889400CF7E9D /* LineSegObj.m */; };
@@ -38,8 +37,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7C4076B72CDA737A00CF7E9D /* PDFExtractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFExtractor.h; sourceTree = "<group>"; };
-		7C4076B82CDA737A00CF7E9D /* PDFExtractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFExtractor.m; sourceTree = "<group>"; };
 		7C4076BA2CDA73EB00CF7E9D /* AW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AW109.pdf; sourceTree = "<group>"; };
 		7C4076BC2CDA855900CF7E9D /* ImgVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImgVC.h; sourceTree = "<group>"; };
 		7C4076BD2CDA855900CF7E9D /* ImgVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImgVC.m; sourceTree = "<group>"; };
@@ -133,8 +130,6 @@
 				FC6BD4152CD912B800A71251 /* CGPathTransformer.m */,
 				FC6BD4192CD9603300A71251 /* PDFExtractViewController.h */,
 				FC6BD41A2CD9603300A71251 /* PDFExtractViewController.m */,
-				7C4076B72CDA737A00CF7E9D /* PDFExtractor.h */,
-				7C4076B82CDA737A00CF7E9D /* PDFExtractor.m */,
 				7C4076BC2CDA855900CF7E9D /* ImgVC.h */,
 				7C4076BD2CDA855900CF7E9D /* ImgVC.m */,
 				FC6BD4422CDCFBDD00A71251 /* PDFDrawVC.h */,
@@ -257,7 +252,6 @@
 				FC6BD45B2CE11E5200A71251 /* CheckerBoardView.m in Sources */,
 				FC6BD4182CD912B800A71251 /* CGPathTransformer.m in Sources */,
 				FC6BD3FF2CD9059600A71251 /* AppDelegate.m in Sources */,
-				7C4076B92CDA737A00CF7E9D /* PDFExtractor.m in Sources */,
 				FC6BD4582CE109CC00A71251 /* MultiViewController.m in Sources */,
 				7C4076C22CDA889400CF7E9D /* LineSegObj.m in Sources */,
 				FC6BD45E2CE11F8B00A71251 /* EasiestViewController.m in Sources */,

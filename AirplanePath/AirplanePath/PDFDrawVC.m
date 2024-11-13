@@ -10,7 +10,7 @@
 // needed for FlightPath line CAShapeLayer
 #import <QuartzCore/QuartzCore.h>
 
-#import "PDFExtractor.h"
+#import "UtilityMethods.h"
 #import "LineSegObj.h"
 #import "FlightPath.h"
 
@@ -133,7 +133,7 @@
 		// if image is pointing right instead of up
 		//radians += M_PI * 0.5;
 		
-		NSImage *pdfImg = [PDFExtractor imageFromPDFPage:pdfUrl pageNum:1 targetSize:sz rotationRadians:radians withColor:[airplaneColors objectAtIndex:i % airplaneColors.count]];
+		NSImage *pdfImg = [UtilityMethods imageFromPDFPage:pdfUrl pageNum:1 targetSize:sz rotationRadians:radians withColor:[airplaneColors objectAtIndex:i % airplaneColors.count]];
 		
 		// rect for generated airplane image
 		//	put center AirplaneView at midpoint of line segment

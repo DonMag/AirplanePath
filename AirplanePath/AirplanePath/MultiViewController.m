@@ -10,7 +10,7 @@
 // needed for FlightPath line CAShapeLayer
 #import <QuartzCore/QuartzCore.h>
 
-#import "PDFExtractor.h"
+#import "UtilityMethods.h"
 #import "CGPathTransformer.h"
 #import "LineSegObj.h"
 #import "FlightPath.h"
@@ -200,7 +200,7 @@
 		// if image is pointing right instead of up
 		//radians += M_PI * 0.5;
 		
-		NSImage *pdfImg = [PDFExtractor imageFromPDFPage:pdfUrl pageNum:1 targetSize:aircraftSize rotationRadians:radians withColor:[aircraftColors objectAtIndex:i % aircraftColors.count]];
+		NSImage *pdfImg = [UtilityMethods imageFromPDFPage:pdfUrl pageNum:1 targetSize:aircraftSize rotationRadians:radians withColor:[aircraftColors objectAtIndex:i % aircraftColors.count]];
 		
 		// rect for generated aircraft image
 		//	put center image at midpoint of line segment
@@ -273,7 +273,7 @@
 	//	set each as content for CALayer
 	//	add CALayer as sublayer for each instance
 	
-	NSArray<id> *vectorPaths = [PDFExtractor extractVectorPathsFromPDF:pdfUrl];
+	NSArray<id> *vectorPaths = [UtilityMethods extractVectorPathsFromPDF:pdfUrl];
 	CGPathRef pth = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);
 	
 	// calculate target rect
