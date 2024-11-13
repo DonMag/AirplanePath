@@ -167,8 +167,9 @@
 	
 	AircraftPathView *pthv = [AircraftPathView new];
 	pthv.frame = CGRectMake(200.0, 100.0, 800.0, 800.0);
-	[pthv setThePath:[[AircraftCGPath new] airplanePath]];
-	[pthv setThePath:[[AircraftCGPath new] copterPath]];
+	//[pthv setThePath:[[AircraftCGPath new] airplanePath]];
+	[pthv setThePath:[AircraftCGPath airplanePath]];
+	[pthv setThePath:[AircraftCGPath copterPath]];
 	// set the rotation
 	
 	// if image is pointing right instead of up

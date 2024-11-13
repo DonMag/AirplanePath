@@ -9,8 +9,7 @@
 
 @implementation AircraftCGPath
 
-- (CGMutablePathRef)airplanePath {
-	
++ (CGMutablePathRef)airplanePath {
 	CGMutablePathRef path = CGPathCreateMutable();
 	
 	CGPathMoveToPoint(path, NULL, 99.3, 201.06);
@@ -36,7 +35,7 @@
 	return path;
 }
 
-- (CGMutablePathRef)copterPath {
++ (CGMutablePathRef)copterPath {
 	CGMutablePathRef currentPath = CGPathCreateMutable();
 	
 	CGPathMoveToPoint(currentPath, NULL, 66.1050, -117.2930);
@@ -111,6 +110,22 @@
 	CGPathCloseSubpath(currentPath);
 	
 	return currentPath;
+}
+
++ (CGMutablePathRef)demoPath {
+	CGMutablePathRef path = CGPathCreateMutable();
+	
+	CGPathMoveToPoint(path, NULL, 50.0, 100.0);
+	CGPathAddLineToPoint(path, NULL, 20.0, 80.0);
+	CGPathAddLineToPoint(path, NULL, 40.0, 80.0);
+	CGPathAddLineToPoint(path, NULL, 40.0, 0.0);
+	CGPathAddLineToPoint(path, NULL, 60.0, 0.0);
+	CGPathAddLineToPoint(path, NULL, 60.0, 80.0);
+	CGPathAddLineToPoint(path, NULL, 80.0, 80.0);
+	CGPathAddLineToPoint(path, NULL, 50.0, 100.0);
+	CGPathCloseSubpath(path);
+	
+	return path;
 }
 
 @end

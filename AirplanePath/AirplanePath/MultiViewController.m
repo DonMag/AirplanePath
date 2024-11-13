@@ -48,7 +48,7 @@
 	NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"AW109" ofType:@"pdf"];
 		imagePath = [[NSBundle mainBundle] pathForResource:@"myairplane" ofType:@"pdf"];
 	//	imagePath = [[NSBundle mainBundle] pathForResource:@"AC130" ofType:@"pdf"];
-	//imagePath = [[NSBundle mainBundle] pathForResource:@"zAW109" ofType:@"pdf"];
+	imagePath = [[NSBundle mainBundle] pathForResource:@"zAW109" ofType:@"pdf"];
 	if (!imagePath) {
 		FatalError(@"Could not find AW109.pdf !!");
 	}
@@ -193,8 +193,13 @@
 	[self usePDFImageClass:[radarViews objectAtIndex:1] pdfUrl:pdfUrl];
 	[self usePDFPathLayers:[radarViews objectAtIndex:2] pdfUrl:pdfUrl];
 
-	CGPathRef aPth = [[AircraftCGPath new] copterPath];
-	aPth = [[AircraftCGPath new] airplanePath];
+	CGPathRef aPth = [AircraftCGPath copterPath];
+	//aPth = [AircraftCGPath airplanePath];
+	aPth = [AircraftCGPath demoPath];
+	
+//	NSArray<id> *vectorPaths = [UtilityMethods extractVectorPathsFromPDF:pdfUrl];
+//	aPth = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);
+
 	[self usePathView:[radarViews objectAtIndex:3] aPath:aPth];
 }
 
@@ -348,6 +353,60 @@
 	
 }
 
+- (void)useCustomPathLayers:(NSImageView *)rv aPath:(CGPathRef)pth
+{
+	// calculate target rect
+	//	center and maintain aspect ratio
+	CGRect pathRect = CGPathGetBoundingBox(pth);
+	CGRect boundsRect = CGRectMake(0, 0, aircraftSize.width, aircraftSize.height);
+	
+	CGRect targRect = [UtilityMethods scaleRect:pathRect toFit:boundsRect];
+	
+	// transform airplane path to fit
+	CGMutablePathRef cpth2 = [CGPathTransformer pathInTargetRect:targRect withPath:pth];
+	if (!cpth2) {
+		return;
+	}
+	
+	// array to hold layers
+	NSMutableArray <CALayer *> *planes = [NSMutableArray array];
+	
+	for (NSInteger i = 0; i < lineSegmentsArray.count; i++) {
+		
+		LineSeg lineSeg;
+		[lineSegmentsArray[i] getValue:&lineSeg];
+		
+		// create a scaled, rotated, color image from PDF
+		// CGContextRotateCTM goes counter-clockwise
+		CGFloat radians = -lineSeg.radians;
+		
+		// if image is pointing right instead of up
+		//radians += M_PI * 0.5;
+		
+		// rect for generated aircraft image
+		//	put center image at midpoint of line segment
+		CGRect r = CGRectOffset(boundsRect, lineSeg.cp.x - (boundsRect.size.width * 0.5), lineSeg.cp.y - (boundsRect.size.height * 0.5));
+		CAShapeLayer *c = [CAShapeLayer new];
+		c.frame = r;
+		c.path = cpth2;
+		c.fillColor = [[aircraftColors objectAtIndex:i % aircraftColors.count] CGColor];
+		c.strokeColor = c.fillColor;
+		c.lineWidth = 0.5;
+		CGAffineTransform rTransform = CGAffineTransformMakeRotation(radians);
+		c.affineTransform = rTransform;
+		
+		[planes addObject:c];
+	}
+	
+	for (NSInteger i = 0; i < planes.count; i++) {
+		CALayer *c = [planes objectAtIndex:i];
+		[rv.layer addSublayer:c];
+		[c setZPosition:1000 + i];
+	}
+	
+	CGPathRelease(cpth2);
+	
+}
 - (void)usePathView:(NSImageView *)rv aPath:(CGPathRef)pth
 {
 	// array to hold aircraft
@@ -388,18 +447,6 @@
 	}
 	
 }
-
-//- (void)mouseUp:(NSEvent *)event {
-//	for (NSImageView *v in radarViews) {
-//		if (!v.image) {
-//			v.image = radarImg;
-//			((CAShapeLayer *)v.layer.sublayers.firstObject).strokeColor = NSColor.blackColor.CGColor;
-//		} else {
-//			v.image = NULL;
-//			((CAShapeLayer *)v.layer.sublayers.firstObject).strokeColor = NSColor.lightGrayColor.CGColor;
-//		}
-//	}
-//}
 
 - (void)switchChanged:(NSSwitch *)sender {
 	NSLog(@"%@", sender.state == YES ? @"On" : @"Off");
