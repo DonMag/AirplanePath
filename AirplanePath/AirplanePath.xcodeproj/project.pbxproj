@@ -34,6 +34,7 @@
 		FC6BD45E2CE11F8B00A71251 /* EasiestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD45D2CE11F8B00A71251 /* EasiestViewController.m */; };
 		FC6BD4602CE26D9E00A71251 /* cpAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD45F2CE26D9E00A71251 /* cpAW109.pdf */; };
 		FC6BD4632CE27F3E00A71251 /* RotatablePDFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4622CE27F3E00A71251 /* RotatablePDFImageView.m */; };
+		FC6BD4662CE4DBA100A71251 /* UtilityMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4652CE4DBA100A71251 /* UtilityMethods.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,8 @@
 		FC6BD45F2CE26D9E00A71251 /* cpAW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cpAW109.pdf; sourceTree = "<group>"; };
 		FC6BD4612CE27F3E00A71251 /* RotatablePDFImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RotatablePDFImageView.h; sourceTree = "<group>"; };
 		FC6BD4622CE27F3E00A71251 /* RotatablePDFImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RotatablePDFImageView.m; sourceTree = "<group>"; };
+		FC6BD4642CE4DBA100A71251 /* UtilityMethods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UtilityMethods.h; sourceTree = "<group>"; };
+		FC6BD4652CE4DBA100A71251 /* UtilityMethods.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UtilityMethods.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,8 @@
 				FC6BD45D2CE11F8B00A71251 /* EasiestViewController.m */,
 				FC6BD4612CE27F3E00A71251 /* RotatablePDFImageView.h */,
 				FC6BD4622CE27F3E00A71251 /* RotatablePDFImageView.m */,
+				FC6BD4642CE4DBA100A71251 /* UtilityMethods.h */,
+				FC6BD4652CE4DBA100A71251 /* UtilityMethods.m */,
 				FC6BD4542CDFB4D000A71251 /* ScratchSave */,
 				FC6BD4032CD9059700A71251 /* Assets.xcassets */,
 				FC6BD4052CD9059800A71251 /* Main.storyboard */,
@@ -244,6 +249,7 @@
 				FC6BD4162CD912B800A71251 /* AircraftCGPath.m in Sources */,
 				FC6BD4092CD9059800A71251 /* main.m in Sources */,
 				FC6BD41B2CD9603300A71251 /* PDFExtractViewController.m in Sources */,
+				FC6BD4662CE4DBA100A71251 /* UtilityMethods.m in Sources */,
 				FC6BD4172CD912B800A71251 /* AircraftPathView.m in Sources */,
 				7C4076C52CDA8F1B00CF7E9D /* AircraftImageView.m in Sources */,
 				FC6BD4532CDFAF4600A71251 /* FlightPath.m in Sources */,

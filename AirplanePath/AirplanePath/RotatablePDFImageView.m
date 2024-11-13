@@ -6,6 +6,7 @@
 //
 
 #import "RotatablePDFImageView.h"
+#import "UtilityMethods.h"
 
 @interface RotatablePDFImageView ()
 {
@@ -46,7 +47,7 @@
 	[self doRotate];
 }
 - (void)rotateByDegrees:(CGFloat)d {
-	rotationRadians = d  * (M_PI / 180.0);
+	rotationRadians = d * (M_PI / 180.0);
 	[self setNeedsLayout:YES];
 }
 - (void)rotateByRadians:(CGFloat)r {
@@ -54,7 +55,7 @@
 	[self setNeedsLayout:YES];
 }
 - (void)doRotate {
-	CGRect newR = [self adjustedRect:self.bounds withRotation:rotationRadians];
+	CGRect newR = [UtilityMethods boundsForRect:self.bounds withRotation:rotationRadians];
 	theImageView.frame = newR;
 	[theImageView rotateByAngle:rotationRadians * 180.0 / M_PI];
 }
@@ -63,23 +64,6 @@
 }
 - (void)setColor:(NSColor *)color {
 	theImageView.contentTintColor = color;
-}
-- (CGRect)adjustedRect:(CGRect)origR withRotation:(CGFloat)angleInRadians {
-	// Calculate the cosine and sine of the rotation angle
-	CGFloat cosAngle = fabs(cos(angleInRadians));
-	CGFloat sinAngle = fabs(sin(angleInRadians));
-	
-	// Calculate the scaling factors to maintain the original bounding box size
-	CGFloat scaleX = 1.0 / (cosAngle + sinAngle);
-	CGFloat scaleY = 1.0 / (cosAngle + sinAngle);
-	
-	CGSize newSZ = CGSizeMake(origR.size.width * scaleX, origR.size.height * scaleY);
-	CGRect newR = origR;
-	newR.size = newSZ;
-	newR.origin.x += (origR.size.width - newSZ.width) * 0.5;
-	newR.origin.y += (origR.size.height - newSZ.height) * 0.5;
-	
-	return newR;
 }
 
 @end
