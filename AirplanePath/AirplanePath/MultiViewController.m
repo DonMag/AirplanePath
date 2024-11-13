@@ -61,23 +61,6 @@
 		FatalError(@"Could not load Radar image !!");
 	}
 	
-	// Create an NSSegmentedControl with 3 segments
-	NSSegmentedControl *segmentedControl = [NSSegmentedControl new];
-	segmentedControl = [[NSSegmentedControl alloc] initWithFrame:NSMakeRect(0, 0, 200, 30)];
-	[segmentedControl setSegmentCount:4];
-	[segmentedControl setTarget:self];
-	[segmentedControl setAction:@selector(segmentedControlChanged:)];
-	
-	// Set labels for each segment
-	[segmentedControl setLabel:@"Image Layers" forSegment:0];
-	[segmentedControl setLabel:@"PDF Image Subviews" forSegment:1];
-	[segmentedControl setLabel:@"PDFPath Layers" forSegment:2];
-	[segmentedControl setLabel:@"Custom Path Subviews" forSegment:3];
-	
-	// Customize appearance
-	[segmentedControl setSegmentStyle:NSSegmentStyleTexturedSquare];
-	[segmentedControl setSelectedSegment:0]; // Set default selected segment
-
 	aircraftColors = @[
 		NSColor.redColor,
 		NSColor.systemGreenColor,
@@ -124,7 +107,7 @@
 		NSImageView *rv = [NSImageView new];
 		
 		rv.wantsLayer = YES;
-		rv.image = radarImg;
+		//rv.image = radarImg;
 		rv.translatesAutoresizingMaskIntoConstraints = NO;
 		[self.view addSubview:rv];
 		[radarViews addObject:rv];
@@ -138,7 +121,7 @@
 		// set the line path properties
 		cLine.path = linePath;
 		cLine.fillColor = NULL;
-		cLine.strokeColor = NSColor.blackColor.CGColor;
+		cLine.strokeColor = NSColor.lightGrayColor.CGColor;
 		cLine.lineWidth = 1;
 
 		NSView *g = self.view;
@@ -161,14 +144,49 @@
 	CGPathRelease(linePath);
 
 	// Add NSSegmentedControl to the view
+	NSSegmentedControl *segmentedControl = [NSSegmentedControl new];
+	segmentedControl = [NSSegmentedControl new];
+	[segmentedControl setSegmentCount:4];
+	[segmentedControl setTarget:self];
+	[segmentedControl setAction:@selector(segmentedControlChanged:)];
+	
+	[segmentedControl setLabel:@"Image Layers" forSegment:0];
+	[segmentedControl setLabel:@"PDF Image Subviews" forSegment:1];
+	[segmentedControl setLabel:@"PDFPath Layers" forSegment:2];
+	[segmentedControl setLabel:@"Custom Path Subviews" forSegment:3];
+	
+	[segmentedControl setSegmentStyle:NSSegmentStyleTexturedSquare];
+	[segmentedControl setSegmentStyle:NSSegmentStyleRounded];
+	[segmentedControl setSelectedSegment:0];
+	
+	NSTextField *swLabel = [NSTextField new];
+	
+	swLabel.stringValue = @"Show background Radar map:";
+	swLabel.editable = NO;
+	swLabel.bezeled = NO;
+	swLabel.drawsBackground = NO;
+	swLabel.selectable = NO;
+	swLabel.font = [NSFont systemFontOfSize:15.0];
+	
+	NSSwitch *sw = [NSSwitch new];
+	[sw setAction:@selector(switchChanged:)];
+
 	segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.view addSubview:segmentedControl];
-	
+	swLabel.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.view addSubview:swLabel];
+	sw.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.view addSubview:sw];
+
 	// Set constraints or frame for segmented control
 	NSView *g = self.view;
 	[NSLayoutConstraint activateConstraints:@[
 		[segmentedControl.centerXAnchor constraintEqualToAnchor:g.centerXAnchor],
-		[segmentedControl.topAnchor constraintEqualToAnchor:g.topAnchor constant:12.0],
+		[segmentedControl.topAnchor constraintEqualToAnchor:g.topAnchor constant:16.0],
+		[swLabel.leadingAnchor constraintEqualToAnchor:segmentedControl.leadingAnchor constant:12.0],
+		[swLabel.centerYAnchor constraintEqualToAnchor:sw.centerYAnchor constant:0.0],
+		[sw.leadingAnchor constraintEqualToAnchor:swLabel.trailingAnchor constant:12.0],
+		[sw.topAnchor constraintEqualToAnchor:segmentedControl.bottomAnchor constant:12.0],
 	]];
 
 	[self useImageLayers:[radarViews objectAtIndex:0] pdfUrl:pdfUrl];
@@ -371,9 +389,22 @@
 	
 }
 
-- (void)mouseUp:(NSEvent *)event {
+//- (void)mouseUp:(NSEvent *)event {
+//	for (NSImageView *v in radarViews) {
+//		if (!v.image) {
+//			v.image = radarImg;
+//			((CAShapeLayer *)v.layer.sublayers.firstObject).strokeColor = NSColor.blackColor.CGColor;
+//		} else {
+//			v.image = NULL;
+//			((CAShapeLayer *)v.layer.sublayers.firstObject).strokeColor = NSColor.lightGrayColor.CGColor;
+//		}
+//	}
+//}
+
+- (void)switchChanged:(NSSwitch *)sender {
+	NSLog(@"%@", sender.state == YES ? @"On" : @"Off");
 	for (NSImageView *v in radarViews) {
-		if (!v.image) {
+		if (sender.state) {
 			v.image = radarImg;
 			((CAShapeLayer *)v.layer.sublayers.firstObject).strokeColor = NSColor.blackColor.CGColor;
 		} else {
@@ -382,7 +413,6 @@
 		}
 	}
 }
-
 - (void)segmentedControlChanged:(NSSegmentedControl *)sender {
 	NSInteger selectedSegment = sender.selectedSegment;
 	NSLog(@"Selected segment: %ld", (long)selectedSegment);
