@@ -9,6 +9,16 @@
 
 @implementation UtilityMethods
 
++ (CGRect)scaleRect:(CGRect)sourceRect toFit:(CGRect)targetRect {
+	CGFloat widthScale = targetRect.size.width / sourceRect.size.width;
+	CGFloat heightScale = targetRect.size.height / sourceRect.size.height;
+	CGFloat scaleFactor = MIN(widthScale, heightScale);
+	CGFloat scaledWidth = sourceRect.size.width * scaleFactor;
+	CGFloat scaledHeight = sourceRect.size.height * scaleFactor;
+	CGFloat originX = targetRect.origin.x + (targetRect.size.width - scaledWidth) / 2.0;
+	CGFloat originY = targetRect.origin.y + (targetRect.size.height - scaledHeight) / 2.0;
+	return CGRectMake(originX, originY, scaledWidth, scaledHeight);;
+}
 + (CGRect)boundsForRect:(CGRect)origR withRotation:(CGFloat)angleInRadians {
 	// Calculate the cosine and sine of the rotation angle
 	CGFloat cosAngle = fabs(cos(angleInRadians));

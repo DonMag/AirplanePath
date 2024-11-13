@@ -85,26 +85,6 @@ NSArray *splitPathIntoSubpaths(CGPathRef path) {
 	return [subpathsArray copy];
 }
 
-CGRect scaleRectToFitTarget(CGRect sourceRect, CGRect targetRect) {
-	// Calculate scale factors for width and height
-	CGFloat widthScale = targetRect.size.width / sourceRect.size.width;
-	CGFloat heightScale = targetRect.size.height / sourceRect.size.height;
-	
-	// Use the smaller scale factor to maintain aspect ratio
-	CGFloat scaleFactor = MIN(widthScale, heightScale);
-	
-	// Calculate the new width and height with the chosen scale factor
-	CGFloat newWidth = sourceRect.size.width * scaleFactor;
-	CGFloat newHeight = sourceRect.size.height * scaleFactor;
-	
-	// Center the scaled rect within the target rect
-	CGFloat newX = targetRect.origin.x + (targetRect.size.width - newWidth) / 2.0;
-	CGFloat newY = targetRect.origin.y + (targetRect.size.height - newHeight) / 2.0;
-	
-	// Return the scaled and centered rect
-	return CGRectMake(newX, newY, newWidth, newHeight);
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -180,7 +160,8 @@ CGRect scaleRectToFitTarget(CGRect sourceRect, CGRect targetRect) {
 	
 	pth = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);
 	pr = CGPathGetPathBoundingBox(pth);
-	scaledRect = scaleRectToFitTarget(pr, targRect);
+	
+	scaledRect = [UtilityMethods scaleRect:pr toFit:targRect];
 
 	spth = [CGPathTransformer pathInTargetRect:scaledRect withPath:pth];
 
@@ -229,8 +210,8 @@ CGRect scaleRectToFitTarget(CGRect sourceRect, CGRect targetRect) {
 	pth = (CGPathRef)CFBridgingRetain([vectorPaths firstObject]);
 	pr = CGPathGetPathBoundingBox(pth);
 	
-	scaledRect = scaleRectToFitTarget(pr, targRect);
-	
+	scaledRect = [UtilityMethods scaleRect:pr toFit:targRect];
+
 	spth = [CGPathTransformer pathInTargetRect:scaledRect withPath:pth];
 	
 	subpaths = splitPathIntoSubpaths(spth);

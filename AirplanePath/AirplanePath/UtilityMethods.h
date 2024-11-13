@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UtilityMethods : NSObject
 
++ (CGRect)scaleRect:(CGRect)sourceRect toFit:(CGRect)targetRect;
 + (CGRect)boundsForRect:(CGRect)origR withRotation:(CGFloat)angleInRadians;
 
 + (NSArray<id> *)extractVectorPathsFromPDF:(NSURL *)pdfURL;

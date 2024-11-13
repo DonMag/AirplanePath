@@ -8,6 +8,7 @@
 #import "AircraftPathView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CGPathTransformer.h"
+#import "UtilityMethods.h"
 
 @interface AircraftPathView ()
 {
@@ -75,14 +76,8 @@
 	//CGRect pathRect = CGPathGetBoundingBox(pth);
 	CGRect pathRect = CGPathGetBoundingBox(self.thePath);
 	CGRect boundsRect = self.bounds;
-	CGFloat widthScale = boundsRect.size.width / pathRect.size.width;
-	CGFloat heightScale = boundsRect.size.height / pathRect.size.height;
-	CGFloat scaleFactor = MIN(widthScale, heightScale);
-	CGFloat scaledWidth = pathRect.size.width * scaleFactor;
-	CGFloat scaledHeight = pathRect.size.height * scaleFactor;
-	CGFloat originX = boundsRect.origin.x + (boundsRect.size.width - scaledWidth) / 2.0;
-	CGFloat originY = boundsRect.origin.y + (boundsRect.size.height - scaledHeight) / 2.0;
-	CGRect targRect = CGRectMake(originX, originY, scaledWidth, scaledHeight);
+	
+	CGRect targRect = [UtilityMethods scaleRect:pathRect toFit:boundsRect];
 
 	// transform airplane path to fit
 	//CGMutablePathRef cpth2 = [CGPathTransformer pathInTargetRect:targRect withPath:pth];

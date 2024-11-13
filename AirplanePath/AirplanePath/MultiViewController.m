@@ -46,9 +46,9 @@
 	//aircraftSize = CGSizeMake(80.0, 80.0);
 
 	NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"AW109" ofType:@"pdf"];
-	//	imagePath = [[NSBundle mainBundle] pathForResource:@"myairplane" ofType:@"pdf"];
+		imagePath = [[NSBundle mainBundle] pathForResource:@"myairplane" ofType:@"pdf"];
 	//	imagePath = [[NSBundle mainBundle] pathForResource:@"AC130" ofType:@"pdf"];
-	imagePath = [[NSBundle mainBundle] pathForResource:@"zAW109" ofType:@"pdf"];
+	//imagePath = [[NSBundle mainBundle] pathForResource:@"zAW109" ofType:@"pdf"];
 	if (!imagePath) {
 		FatalError(@"Could not find AW109.pdf !!");
 	}
@@ -176,6 +176,7 @@
 	[self usePDFPathLayers:[radarViews objectAtIndex:2] pdfUrl:pdfUrl];
 
 	CGPathRef aPth = [[AircraftCGPath new] copterPath];
+	aPth = [[AircraftCGPath new] airplanePath];
 	[self usePathView:[radarViews objectAtIndex:3] aPath:aPth];
 }
 
@@ -278,17 +279,10 @@
 	
 	// calculate target rect
 	//	center and maintain aspect ratio
-	//CGRect pathRect = CGPathGetBoundingBox(pth);
 	CGRect pathRect = CGPathGetBoundingBox(pth);
 	CGRect boundsRect = CGRectMake(0, 0, aircraftSize.width, aircraftSize.height);
-	CGFloat widthScale = boundsRect.size.width / pathRect.size.width;
-	CGFloat heightScale = boundsRect.size.height / pathRect.size.height;
-	CGFloat scaleFactor = MIN(widthScale, heightScale);
-	CGFloat scaledWidth = pathRect.size.width * scaleFactor;
-	CGFloat scaledHeight = pathRect.size.height * scaleFactor;
-	CGFloat originX = boundsRect.origin.x + (boundsRect.size.width - scaledWidth) / 2.0;
-	CGFloat originY = boundsRect.origin.y + (boundsRect.size.height - scaledHeight) / 2.0;
-	CGRect targRect = CGRectMake(originX, originY, scaledWidth, scaledHeight);
+	
+	CGRect targRect = [UtilityMethods scaleRect:pathRect toFit:boundsRect];
 	
 	// transform airplane path to fit
 	CGMutablePathRef cpth2 = [CGPathTransformer pathInTargetRect:targRect withPath:pth];
