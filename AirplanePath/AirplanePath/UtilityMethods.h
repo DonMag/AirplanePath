@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray<id> *)extractVectorPathsFromPDF:(NSURL *)pdfURL;
 + (NSImage *)imageFromPDFPage:(NSURL *)pdfURL pageNum:(NSInteger)pageNum targetSize:(CGSize)targetSize rotationRadians:(CGFloat)radians withColor:(NSColor *)withColor;
 
++ (CGMutablePathRef)pathInTargetRect:(CGRect)targetRect withPath:(CGMutablePathRef)path;
+
 @end
 
 NS_ASSUME_NONNULL_END

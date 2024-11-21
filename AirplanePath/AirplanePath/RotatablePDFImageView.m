@@ -38,12 +38,12 @@
 	theImageView = [NSImageView new];
 	theImageView.wantsLayer = YES;
 	theImageView.imageScaling = NSImageScaleProportionallyUpOrDown;
+	//theImageView.layer.backgroundColor = [NSColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.25].CGColor;
 	[self addSubview:theImageView];
 	self.clipsToBounds = NO;
 }
 - (void)layout {
 	[super layout];
-	NSLog(@"layout");
 	[self doRotate];
 }
 - (void)rotateByDegrees:(CGFloat)d {
@@ -55,6 +55,12 @@
 	[self setNeedsLayout:YES];
 }
 - (void)doRotate {
+	if (self.bounds.size.width == 0.0 || self.bounds.size.height == 0.0) {
+		return;
+	}
+	// reset rotation
+	[theImageView rotateByAngle:-theImageView.boundsRotation];
+	// calculate rect needed so rotated size matches original size
 	CGRect newR = [UtilityMethods boundsForRect:self.bounds withRotation:rotationRadians];
 	theImageView.frame = newR;
 	[theImageView rotateByAngle:rotationRadians * 180.0 / M_PI];

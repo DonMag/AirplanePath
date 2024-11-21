@@ -45,9 +45,6 @@ void lineToCallback(CGPDFScannerRef scanner, void *info);
 void curveToCallback(CGPDFScannerRef scanner, void *info);
 void closePathCallback(CGPDFScannerRef scanner, void *info);
 
-void vPathCallback(CGPDFScannerRef scanner, void *info);
-void yPathCallback(CGPDFScannerRef scanner, void *info);
-
 CGMutablePathRef currentPath = NULL;
 
 + (NSArray<id> *)extractVectorPathsFromPDF:(NSURL *)pdfURL {
@@ -71,14 +68,11 @@ CGMutablePathRef currentPath = NULL;
 		CGPDFContentStreamRef contentStream = CGPDFContentStreamCreateWithPage(cgPage);
 		CGPDFOperatorTableRef operatorTable = CGPDFOperatorTableCreate();
 		
-		// Register custom operator callbacks for path extraction
+		// Register custom callbacks for common operators for path extraction
 		CGPDFOperatorTableSetCallback(operatorTable, "m", &moveToCallback);  // move to
 		CGPDFOperatorTableSetCallback(operatorTable, "l", &lineToCallback);  // line to
 		CGPDFOperatorTableSetCallback(operatorTable, "c", &curveToCallback); // curve to
 		CGPDFOperatorTableSetCallback(operatorTable, "h", &closePathCallback); // close path
-		
-		CGPDFOperatorTableSetCallback(operatorTable, "v", &vPathCallback); // close path
-		CGPDFOperatorTableSetCallback(operatorTable, "y", &yPathCallback); // close path
 		
 		CGPDFScannerRef scanner = CGPDFScannerCreate(contentStream, operatorTable, (__bridge void *)(vectorPaths));
 		
@@ -129,26 +123,6 @@ void curveToCallback(CGPDFScannerRef scanner, void *info) {
 		CGPDFScannerPopNumber(scanner, &y1) && CGPDFScannerPopNumber(scanner, &x1)) {
 		CGPathAddCurveToPoint(currentPath, NULL, x1, y1, x2, y2, x3, y3);
 		//NSLog(@"CGPathAddCurveToPoint(currentPath, NULL, %f, %f, %f, %f, %f, %f);", x1, y1, x2, y2, x3, y3);
-	}
-}
-
-void vPathCallback(CGPDFScannerRef scanner, void *info) {
-	CGPDFReal x1, y1, x2, y2, x3, y3;
-	if (CGPDFScannerPopNumber(scanner, &y3) && CGPDFScannerPopNumber(scanner, &x3) &&
-		CGPDFScannerPopNumber(scanner, &y2) && CGPDFScannerPopNumber(scanner, &x2) &&
-		CGPDFScannerPopNumber(scanner, &y1) && CGPDFScannerPopNumber(scanner, &x1)) {
-		//CGPathAddCurveToPoint(currentPath, NULL, x1, y1, x2, y2, x3, y3);
-		//NSLog(@"v    : %f, %f : %f, %f : %f, %f", x1, y1, x2, y2, x3, y3);
-	}
-}
-
-void yPathCallback(CGPDFScannerRef scanner, void *info) {
-	CGPDFReal x1, y1, x2, y2, x3, y3;
-	if (CGPDFScannerPopNumber(scanner, &y3) && CGPDFScannerPopNumber(scanner, &x3) &&
-		CGPDFScannerPopNumber(scanner, &y2) && CGPDFScannerPopNumber(scanner, &x2) &&
-		CGPDFScannerPopNumber(scanner, &y1) && CGPDFScannerPopNumber(scanner, &x1)) {
-		//CGPathAddCurveToPoint(currentPath, NULL, x1, y1, x2, y2, x3, y3);
-		//NSLog(@"y    : %f, %f : %f, %f : %f, %f", x1, y1, x2, y2, x3, y3);
 	}
 }
 
@@ -220,6 +194,34 @@ void closePathCallback(CGPDFScannerRef scanner, void *info) {
 	[image unlockFocus]; // Finish drawing into the NSImage context
 	
 	return image;
+}
+
++ (CGMutablePathRef)pathInTargetRect:(CGRect)targetRect withPath:(CGMutablePathRef)path {
+	if (!path) return NULL;
+	
+	// Get the current bounding rect of the path
+	CGRect boundingBox = CGPathGetBoundingBox(path);
+	
+	// Translate the path to origin
+	CGAffineTransform translateToOrigin = CGAffineTransformMakeTranslation(-boundingBox.origin.x, -boundingBox.origin.y);
+	CGMutablePathRef translatedPath = CGPathCreateMutableCopyByTransformingPath(path, &translateToOrigin);
+	
+	if (!translatedPath) return NULL;
+	
+	// Scale the path to fit the target rectangle
+	CGAffineTransform scaleTransform = CGAffineTransformMakeScale(targetRect.size.width / boundingBox.size.width,
+																  targetRect.size.height / boundingBox.size.height);
+	CGMutablePathRef scaledPath = CGPathCreateMutableCopyByTransformingPath(translatedPath, &scaleTransform);
+	CGPathRelease(translatedPath); // Release the translated path
+	
+	if (!scaledPath) return NULL;
+	
+	// Translate the path to the target rectangle's origin
+	CGAffineTransform translateToTarget = CGAffineTransformMakeTranslation(targetRect.origin.x, targetRect.origin.y);
+	CGMutablePathRef finalPath = CGPathCreateMutableCopyByTransformingPath(scaledPath, &translateToTarget);
+	CGPathRelease(scaledPath); // Release the scaled path
+	
+	return finalPath;
 }
 
 @end

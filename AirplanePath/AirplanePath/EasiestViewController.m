@@ -57,7 +57,9 @@
 	[bgv rotateByAngle:30.0];
 	
 	NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"cpAW109" ofType:@"pdf"];
+	imagePath = [[NSBundle mainBundle] pathForResource:@"AW109" ofType:@"pdf"];
 	//imagePath = [[NSBundle mainBundle] pathForResource:@"myairplane" ofType:@"pdf"];
+	imagePath = [[NSBundle mainBundle] pathForResource:@"AC130" ofType:@"pdf"];
 	NSImage *img = [[NSImage alloc] initWithContentsOfFile:imagePath];
 	img.template = YES;
 	
@@ -69,13 +71,15 @@
 
 	r = CGRectMake(0, 0, 40, 40);
 
-	for (NSImageView *v in @[bgImgA, bgImgB, bgImgC, bgImgD]) {
-		v.wantsLayer = YES;
-		v.imageScaling = NSImageScaleProportionallyUpOrDown;
-		v.frame = r;
-		v.image = img;
-		[self.view addSubview:v];
-		//v.layer.backgroundColor = [[NSColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:0.5] CGColor];
+	if (0) {
+		for (NSImageView *v in @[bgImgA, bgImgB, bgImgC, bgImgD]) {
+			v.wantsLayer = YES;
+			v.imageScaling = NSImageScaleProportionallyUpOrDown;
+			v.frame = r;
+			v.image = img;
+			[self.view addSubview:v];
+			//v.layer.backgroundColor = [[NSColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:0.5] CGColor];
+		}
 	}
 
 	CGRect newR;
@@ -164,27 +168,47 @@
 
 	}
 
+	NSMutableArray <RotatablePDFImageView *> *vs = [NSMutableArray array];
+	for (int i = 0; i < 3; i++) {
+		RotatablePDFImageView *v = [RotatablePDFImageView new];
+		[v setColor:NSColor.redColor];
+		[v setImage:img];
+		[v rotateByDegrees:-45.0];
+		[self.view addSubview:v];
+		[vs addObject:v];
+	}
+	RotatablePDFImageView *v;
+	v = [vs objectAtIndex:0];
+	v.frame = CGRectMake(40.0, 220.0, 40.0, 40.0);
+	v = [vs objectAtIndex:1];
+	v.frame = CGRectMake(100.0, 180.0, 120.0, 120.0);
+	v = [vs objectAtIndex:2];
+	v.frame = CGRectMake(-40.0, -140.0, 1600.0, 1600.0);
+
+	if (0) {
+		AircraftPathView *pthv = [AircraftPathView new];
+		pthv.frame = CGRectMake(200.0, 100.0, 800.0, 800.0);
+		//[pthv setThePath:[[AircraftCGPath new] airplanePath]];
+		[pthv setThePath:[AircraftCGPath airplanePath]];
+		[pthv setThePath:[AircraftCGPath copterPath]];
+		
+		// set the rotation
+		
+		// if image is pointing right instead of up
+		//radians += M_PI * 0.5;
+		
+		[pthv rotateByDegrees:-45.0];
+		
+		pthv.strokeWidth = 1.0;
+		
+		pthv.fillColor = NSColor.redColor;
+		pthv.strokeColor = pthv.fillColor;
+		
+		//[pthv setPath:[[AircraftCGPath new] airplanePath]];
+		
+		[self.view addSubview:pthv];
+	}
 	
-	AircraftPathView *pthv = [AircraftPathView new];
-	pthv.frame = CGRectMake(200.0, 100.0, 800.0, 800.0);
-	//[pthv setThePath:[[AircraftCGPath new] airplanePath]];
-	[pthv setThePath:[AircraftCGPath airplanePath]];
-	[pthv setThePath:[AircraftCGPath copterPath]];
-	// set the rotation
-	
-	// if image is pointing right instead of up
-	//radians += M_PI * 0.5;
-	
-	[pthv rotateByDegrees:-45.0];
-	
-	pthv.strokeWidth = 1.0;
-	
-	pthv.fillColor = NSColor.purpleColor;
-	pthv.strokeColor = pthv.fillColor;
-	
-	//[pthv setPath:[[AircraftCGPath new] airplanePath]];
-	
-	[self.view addSubview:pthv];
 	return;
 
 	

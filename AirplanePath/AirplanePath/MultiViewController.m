@@ -44,16 +44,19 @@
 	//	the airplane path shape will be scaled maintaining proportion
 	aircraftSize = CGSizeMake(40.0, 40.0);
 	//aircraftSize = CGSizeMake(80.0, 80.0);
+	//aircraftSize = CGSizeMake(120.0, 120.0);
 
-	NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"AW109" ofType:@"pdf"];
-		imagePath = [[NSBundle mainBundle] pathForResource:@"myairplane" ofType:@"pdf"];
-	//	imagePath = [[NSBundle mainBundle] pathForResource:@"AC130" ofType:@"pdf"];
-	imagePath = [[NSBundle mainBundle] pathForResource:@"zAW109" ofType:@"pdf"];
-	if (!imagePath) {
+	NSString *pdfPath = [[NSBundle mainBundle] pathForResource:@"AW109" ofType:@"pdf"];
+		pdfPath = [[NSBundle mainBundle] pathForResource:@"myairplane" ofType:@"pdf"];
+		pdfPath = [[NSBundle mainBundle] pathForResource:@"AC130_fixed" ofType:@"pdf"];
+		pdfPath = [[NSBundle mainBundle] pathForResource:@"AC130_cln2fv1" ofType:@"pdf"];
+	pdfPath = [[NSBundle mainBundle] pathForResource:@"userC130" ofType:@"pdf"];
+	//imagePath = [[NSBundle mainBundle] pathForResource:@"zAW109" ofType:@"pdf"];
+	if (!pdfPath) {
 		FatalError(@"Could not find AW109.pdf !!");
 	}
 
-	NSURL *pdfUrl = [NSURL fileURLWithPath:imagePath isDirectory:NO];
+	NSURL *pdfUrl = [NSURL fileURLWithPath:pdfPath isDirectory:NO];
 
 	// "background" radar image
 	radarImg = [NSImage imageNamed:@"Radar"];
@@ -279,7 +282,13 @@
 		
 		[v setColor:[aircraftColors objectAtIndex:i % aircraftColors.count]];
 		[v rotateByRadians:-radians];
-		
+	
+		// shadow might be desired
+//		v.layer.shadowColor = NSColor.blackColor.CGColor;
+//		v.layer.shadowOpacity = 1.0;
+//		v.layer.shadowOffset = CGSizeMake(1.0, -1.0);
+//		v.layer.shadowRadius = 1.0;
+
 		[planes addObject:v];
 	}
 	

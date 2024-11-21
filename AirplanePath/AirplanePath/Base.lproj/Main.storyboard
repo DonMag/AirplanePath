@@ -707,13 +707,13 @@
             <objects>
                 <viewController id="E9v-F7-YkD" customClass="MultiViewController" sceneMemberID="viewController">
                     <view key="view" id="qLI-iK-Qlg">
-                        <rect key="frame" x="0.0" y="0.0" width="1200" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="628" height="414"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="uPu-xC-KiH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="675" y="525"/>
+            <point key="canvasLocation" x="885" y="-6"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">

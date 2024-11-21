@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setImage:(NSImage *)img;
 - (void)setColor:(NSColor *)color;
 
-- (void)rotateByRadians: (CGFloat)r;
+- (void)rotateByRadians:(CGFloat)r;
 - (void)rotateByDegrees:(CGFloat)d;
 
 @end
