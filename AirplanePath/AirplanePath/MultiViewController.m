@@ -46,14 +46,20 @@
 	//aircraftSize = CGSizeMake(80.0, 80.0);
 	//aircraftSize = CGSizeMake(120.0, 120.0);
 
-	NSString *pdfPath = [[NSBundle mainBundle] pathForResource:@"AW109" ofType:@"pdf"];
-		pdfPath = [[NSBundle mainBundle] pathForResource:@"myairplane" ofType:@"pdf"];
-		pdfPath = [[NSBundle mainBundle] pathForResource:@"AC130_fixed" ofType:@"pdf"];
-		pdfPath = [[NSBundle mainBundle] pathForResource:@"AC130_cln2fv1" ofType:@"pdf"];
-	pdfPath = [[NSBundle mainBundle] pathForResource:@"userC130" ofType:@"pdf"];
-	//imagePath = [[NSBundle mainBundle] pathForResource:@"zAW109" ofType:@"pdf"];
+	NSString *fileName;
+	NSString *pdfPath;
+	
+	fileName = @"user_AW109";
+	fileName = @"user_AC130";
+	fileName = @"DM_SimpleAirplane";
+	fileName = @"DM_AW109";
+	fileName = @"DM_AC130";
+	
+	pdfPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"pdf"];
+
 	if (!pdfPath) {
-		FatalError(@"Could not find AW109.pdf !!");
+		NSString *s = [NSString stringWithFormat:@"Could not find %@.pdf !!", fileName];
+		FatalError(s);
 	}
 
 	NSURL *pdfUrl = [NSURL fileURLWithPath:pdfPath isDirectory:NO];
@@ -253,7 +259,9 @@
 	
 	NSImage *img = [[NSImage alloc] initWithContentsOfURL:pdfUrl];
 	if (!img) {
-		FatalError(@"Could not load AW109.pdf as NSImage !!");
+		NSString *f = [pdfUrl lastPathComponent];
+		NSString *s = [NSString stringWithFormat:@"Could not load %@ as an NSImage !!", f];
+		FatalError(s);
 	}
 	img.template = YES;
 	

@@ -22,28 +22,15 @@
 		FC6BD41B2CD9603300A71251 /* PDFExtractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD41A2CD9603300A71251 /* PDFExtractViewController.m */; };
 		FC6BD4442CDCFBDD00A71251 /* PDFDrawVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4432CDCFBDD00A71251 /* PDFDrawVC.m */; };
 		FC6BD4462CDD31FB00A71251 /* DM_SimpleAirplaine.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4452CDD31FA00A71251 /* DM_SimpleAirplaine.pdf */; };
-		FC6BD4482CDD34C500A71251 /* AC130.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4472CDD34C500A71251 /* AC130.pdf */; };
-		FC6BD44A2CDE479E00A71251 /* MyAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4492CDE479E00A71251 /* MyAW109.pdf */; };
-		FC6BD44E2CDE4A1800A71251 /* zAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD44D2CDE4A1800A71251 /* zAW109.pdf */; };
-		FC6BD4502CDE4F0C00A71251 /* sAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD44F2CDE4F0C00A71251 /* sAW109.pdf */; };
 		FC6BD4532CDFAF4600A71251 /* FlightPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4522CDFAF4600A71251 /* FlightPath.m */; };
 		FC6BD4552CDFB4D000A71251 /* ScratchSave in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4542CDFB4D000A71251 /* ScratchSave */; };
 		FC6BD4582CE109CC00A71251 /* MultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4572CE109CC00A71251 /* MultiViewController.m */; };
 		FC6BD45B2CE11E5200A71251 /* CheckerBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD45A2CE11E5200A71251 /* CheckerBoardView.m */; };
 		FC6BD45E2CE11F8B00A71251 /* EasiestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD45D2CE11F8B00A71251 /* EasiestViewController.m */; };
-		FC6BD4602CE26D9E00A71251 /* cpAW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD45F2CE26D9E00A71251 /* cpAW109.pdf */; };
 		FC6BD4632CE27F3E00A71251 /* RotatablePDFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4622CE27F3E00A71251 /* RotatablePDFImageView.m */; };
 		FC6BD4662CE4DBA100A71251 /* UtilityMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4652CE4DBA100A71251 /* UtilityMethods.m */; };
 		FC6BD4692CE6290300A71251 /* PDFCheckerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD4682CE6290300A71251 /* PDFCheckerViewController.m */; };
-		FC6BD46B2CE6398200A71251 /* AC130_multi_fixed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD46A2CE6398200A71251 /* AC130_multi_fixed.pdf */; };
-		FC6BD46D2CE63A9400A71251 /* AC130_a.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD46C2CE63A9300A71251 /* AC130_a.pdf */; };
-		FC6BD46F2CE63FE200A71251 /* AC130_b.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD46E2CE63FE200A71251 /* AC130_b.pdf */; };
-		FC6BD4712CE6406100A71251 /* AC130_c.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD4702CE6406100A71251 /* AC130_c.pdf */; };
 		FC7F58C52CE7901400A026C0 /* user_AC130.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC7F58C42CE7901400A026C0 /* user_AC130.pdf */; };
-		FC7F58C72CE7944100A026C0 /* AC130_fixed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC7F58C62CE7944100A026C0 /* AC130_fixed.pdf */; };
-		FC7F590F2CECC68100A026C0 /* AC130_cln2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC7F590E2CECC68100A026C0 /* AC130_cln2.pdf */; };
-		FC7F59112CECC70300A026C0 /* AC130_cln2fv.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC7F59102CECC70300A026C0 /* AC130_cln2fv.pdf */; };
-		FC7F59132CECC84E00A026C0 /* AC130_cln2fv1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC7F59122CECC84E00A026C0 /* AC130_cln2fv1.pdf */; };
 		FC91848B2CEF686000180E83 /* DM_AW109.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC91848A2CEF686000180E83 /* DM_AW109.pdf */; };
 		FC91848D2CEF686C00180E83 /* DM_AC130.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC91848C2CEF686C00180E83 /* DM_AC130.pdf */; };
 /* End PBXBuildFile section */
@@ -76,10 +63,6 @@
 		FC6BD4422CDCFBDD00A71251 /* PDFDrawVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFDrawVC.h; sourceTree = "<group>"; };
 		FC6BD4432CDCFBDD00A71251 /* PDFDrawVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFDrawVC.m; sourceTree = "<group>"; };
 		FC6BD4452CDD31FA00A71251 /* DM_SimpleAirplaine.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = DM_SimpleAirplaine.pdf; sourceTree = "<group>"; };
-		FC6BD4472CDD34C500A71251 /* AC130.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AC130.pdf; sourceTree = "<group>"; };
-		FC6BD4492CDE479E00A71251 /* MyAW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = MyAW109.pdf; sourceTree = "<group>"; };
-		FC6BD44D2CDE4A1800A71251 /* zAW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = zAW109.pdf; sourceTree = "<group>"; };
-		FC6BD44F2CDE4F0C00A71251 /* sAW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sAW109.pdf; sourceTree = "<group>"; };
 		FC6BD4512CDFAF4600A71251 /* FlightPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightPath.h; sourceTree = "<group>"; };
 		FC6BD4522CDFAF4600A71251 /* FlightPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightPath.m; sourceTree = "<group>"; };
 		FC6BD4542CDFB4D000A71251 /* ScratchSave */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScratchSave; sourceTree = "<group>"; };
@@ -89,22 +72,13 @@
 		FC6BD45A2CE11E5200A71251 /* CheckerBoardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckerBoardView.m; sourceTree = "<group>"; };
 		FC6BD45C2CE11F8B00A71251 /* EasiestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasiestViewController.h; sourceTree = "<group>"; };
 		FC6BD45D2CE11F8B00A71251 /* EasiestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasiestViewController.m; sourceTree = "<group>"; };
-		FC6BD45F2CE26D9E00A71251 /* cpAW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cpAW109.pdf; sourceTree = "<group>"; };
 		FC6BD4612CE27F3E00A71251 /* RotatablePDFImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RotatablePDFImageView.h; sourceTree = "<group>"; };
 		FC6BD4622CE27F3E00A71251 /* RotatablePDFImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RotatablePDFImageView.m; sourceTree = "<group>"; };
 		FC6BD4642CE4DBA100A71251 /* UtilityMethods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UtilityMethods.h; sourceTree = "<group>"; };
 		FC6BD4652CE4DBA100A71251 /* UtilityMethods.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UtilityMethods.m; sourceTree = "<group>"; };
 		FC6BD4672CE6290300A71251 /* PDFCheckerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFCheckerViewController.h; sourceTree = "<group>"; };
 		FC6BD4682CE6290300A71251 /* PDFCheckerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFCheckerViewController.m; sourceTree = "<group>"; };
-		FC6BD46A2CE6398200A71251 /* AC130_multi_fixed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AC130_multi_fixed.pdf; sourceTree = "<group>"; };
-		FC6BD46C2CE63A9300A71251 /* AC130_a.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AC130_a.pdf; sourceTree = "<group>"; };
-		FC6BD46E2CE63FE200A71251 /* AC130_b.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AC130_b.pdf; sourceTree = "<group>"; };
-		FC6BD4702CE6406100A71251 /* AC130_c.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AC130_c.pdf; sourceTree = "<group>"; };
 		FC7F58C42CE7901400A026C0 /* user_AC130.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = user_AC130.pdf; sourceTree = "<group>"; };
-		FC7F58C62CE7944100A026C0 /* AC130_fixed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AC130_fixed.pdf; sourceTree = "<group>"; };
-		FC7F590E2CECC68100A026C0 /* AC130_cln2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AC130_cln2.pdf; sourceTree = "<group>"; };
-		FC7F59102CECC70300A026C0 /* AC130_cln2fv.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AC130_cln2fv.pdf; sourceTree = "<group>"; };
-		FC7F59122CECC84E00A026C0 /* AC130_cln2fv1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AC130_cln2fv1.pdf; sourceTree = "<group>"; };
 		FC91848A2CEF686000180E83 /* DM_AW109.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = DM_AW109.pdf; sourceTree = "<group>"; };
 		FC91848C2CEF686C00180E83 /* DM_AC130.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = DM_AC130.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,24 +152,11 @@
 				FC6BD4052CD9059800A71251 /* Main.storyboard */,
 				FC6BD4082CD9059800A71251 /* main.m */,
 				FC6BD40A2CD9059800A71251 /* AirplanePath.entitlements */,
-				7C4076BA2CDA73EB00CF7E9D /* user_AW109.pdf */,
 				FC6BD4452CDD31FA00A71251 /* DM_SimpleAirplaine.pdf */,
 				FC91848A2CEF686000180E83 /* DM_AW109.pdf */,
 				FC91848C2CEF686C00180E83 /* DM_AC130.pdf */,
-				FC6BD4472CDD34C500A71251 /* AC130.pdf */,
-				FC6BD4492CDE479E00A71251 /* MyAW109.pdf */,
-				FC6BD44D2CDE4A1800A71251 /* zAW109.pdf */,
-				FC6BD44F2CDE4F0C00A71251 /* sAW109.pdf */,
-				FC6BD45F2CE26D9E00A71251 /* cpAW109.pdf */,
-				FC6BD46A2CE6398200A71251 /* AC130_multi_fixed.pdf */,
-				FC6BD46C2CE63A9300A71251 /* AC130_a.pdf */,
-				FC6BD46E2CE63FE200A71251 /* AC130_b.pdf */,
-				FC6BD4702CE6406100A71251 /* AC130_c.pdf */,
+				7C4076BA2CDA73EB00CF7E9D /* user_AW109.pdf */,
 				FC7F58C42CE7901400A026C0 /* user_AC130.pdf */,
-				FC7F58C62CE7944100A026C0 /* AC130_fixed.pdf */,
-				FC7F590E2CECC68100A026C0 /* AC130_cln2.pdf */,
-				FC7F59102CECC70300A026C0 /* AC130_cln2fv.pdf */,
-				FC7F59122CECC84E00A026C0 /* AC130_cln2fv1.pdf */,
 			);
 			path = AirplanePath;
 			sourceTree = "<group>";
@@ -258,24 +219,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC6BD4462CDD31FB00A71251 /* DM_SimpleAirplaine.pdf in Resources */,
-				FC6BD4482CDD34C500A71251 /* AC130.pdf in Resources */,
-				FC6BD46F2CE63FE200A71251 /* AC130_b.pdf in Resources */,
 				7C4076BB2CDA73EB00CF7E9D /* user_AW109.pdf in Resources */,
 				FC6BD4042CD9059700A71251 /* Assets.xcassets in Resources */,
 				FC6BD4552CDFB4D000A71251 /* ScratchSave in Resources */,
 				FC6BD4072CD9059800A71251 /* Main.storyboard in Resources */,
-				FC6BD4712CE6406100A71251 /* AC130_c.pdf in Resources */,
-				FC7F59132CECC84E00A026C0 /* AC130_cln2fv1.pdf in Resources */,
-				FC6BD4602CE26D9E00A71251 /* cpAW109.pdf in Resources */,
-				FC6BD46D2CE63A9400A71251 /* AC130_a.pdf in Resources */,
-				FC7F590F2CECC68100A026C0 /* AC130_cln2.pdf in Resources */,
-				FC6BD44E2CDE4A1800A71251 /* zAW109.pdf in Resources */,
-				FC7F59112CECC70300A026C0 /* AC130_cln2fv.pdf in Resources */,
 				FC91848B2CEF686000180E83 /* DM_AW109.pdf in Resources */,
-				FC6BD44A2CDE479E00A71251 /* MyAW109.pdf in Resources */,
-				FC6BD4502CDE4F0C00A71251 /* sAW109.pdf in Resources */,
-				FC6BD46B2CE6398200A71251 /* AC130_multi_fixed.pdf in Resources */,
-				FC7F58C72CE7944100A026C0 /* AC130_fixed.pdf in Resources */,
 				FC7F58C52CE7901400A026C0 /* user_AC130.pdf in Resources */,
 				FC91848D2CEF686C00180E83 /* DM_AC130.pdf in Resources */,
 			);
